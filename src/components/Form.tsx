@@ -26,6 +26,7 @@ const CssTextField = styled(TextField)({
     cursor: 'pointer !important',
   },
   marginBottom: '10px', // Add margin-bottom here
+  width: 'calc(1.6 * 200px + 20px)'
 });
 
 const Form = () => {
@@ -70,12 +71,10 @@ const Form = () => {
       // Assume there's an API call here
 
       // await storeUserData(email,'1.2.3');
-      setEmail('');
       setLoading(false);
     }
   }catch(err){
     setEmailError(true);
-    setLoading(false);
 
   }
   };
