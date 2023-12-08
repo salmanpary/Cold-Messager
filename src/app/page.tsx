@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <>
       <nav>
-        <div className="flex items-center justify-center py-2">
+        <div className="flex items-center justify-center py-6">
           <img
             src="/cold-messager-logo-2.png"
             alt="Vercel Logo"
