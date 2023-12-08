@@ -70,10 +70,12 @@ const Form = () => {
       // Assume there's an API call here
 
       // await storeUserData(email,'1.2.3');
+      setEmail('');
       setLoading(false);
     }
   }catch(err){
     setEmailError(true);
+    setLoading(false);
 
   }
   };
