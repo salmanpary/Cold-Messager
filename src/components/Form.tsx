@@ -28,7 +28,7 @@ const CssTextField = styled(TextField)({
   marginBottom: '10px', // Add margin-bottom here
   width: 'calc(1.6 * 200px + 20px)',
   '@media (max-width: 600px)': {
-    width: 'calc(1.3 * 200px + 20px)',
+    width: 'calc(1.4* 200px + 20px)',
   },
 });
 
