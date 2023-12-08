@@ -36,55 +36,63 @@ const Form = () => {
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState('');
   const [emailError, setEmailError] = useState(false);
+  const [submissionSuccess, setSubmissionSuccess] = useState(false);
+
   const handleEnterKeyPress = (event) => {
     if (event.key === 'Enter') {
       handleButtonClick();
     }
   };
+
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
     setEmailError(false);
+    setSubmissionSuccess(false);
   };
 
   const validateEmail = () => {
-    // A simple email validation regex
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const isValidEmail = emailRegex.test(email);
 
-    if (!isValidEmail) {
-      setEmailError(true);
-    } else {
-      setEmailError(false);
-    }
+    setEmailError(!isValidEmail);
   };
 
   const handleButtonClick = async () => {
+    // Clear previous success message and error
+    setSubmissionSuccess(false);
+    setEmailError(false);
+
     // Check if the email is empty
     if (!email.trim()) {
       setEmailError(true);
       return;
     }
-  
-    validateEmail();
-    try{
-    if (!emailError) {
-      // Simulate API call delay
-      setLoading(true);
-      const response = await axios.post('/api/register', { email });
-      // Assume there's an API call here
 
-      // await storeUserData(email,'1.2.3');
+    validateEmail();
+
+    try {
+      if (!emailError) {
+        setLoading(true);
+        const response = await axios.post('/api/register', { email });
+        setLoading(false);
+        
+        // Assume the API call was successful
+        setSubmissionSuccess(true);
+
+        // Clear the email field after successful submission
+        setEmail('');
+      }
+    } catch (err) {
+      // Handle API call error
+      setEmailError(true);
       setLoading(false);
     }
-  }catch(err){
-    setEmailError(true);
-
-  }
   };
+
   return (
     <div className="flex flex-col justify-center items-center m-5">
       <CssTextField
-        error={emailError}
+        error={emailError&& !submissionSuccess}
         required
         id="outlined-required"
         label="Email Address"
@@ -94,12 +102,12 @@ const Form = () => {
         onBlur={validateEmail}
         onKeyDown={handleEnterKeyPress}
       />
-      {emailError && (
+      {emailError && !submissionSuccess && (
         <Typography variant="body2" className="text-red-500 mt-1">
           Email is not valid.
         </Typography>
       )}
-      <LoadingButton 
+      <LoadingButton
         loading={loading}
         onClick={handleButtonClick}
         variant="contained"
