@@ -5,7 +5,7 @@ import { FaLinkedin, FaTwitter, FaInstagram } from 'react-icons/fa';
 // Define the Footer component
 const Footer = () => {
   return (
-    <div className='flex  justify-center items-center'>
+    <div className='flex  justify-center items-center my-10'>
       {/* LinkedIn Icon */}
       <a
         href='https://www.linkedin.com/company/cold-messager/?lipi=urn%3Ali%3Apage%3Ad_flagship3_search_srp_companies%3BXVyiHlHhQL%2BQNt7Mz9jsEQ%3D%3D'  // Add your LinkedIn profile link here

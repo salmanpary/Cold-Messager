@@ -6,26 +6,28 @@ import { styled } from '@mui/system';
 import axios from 'axios';
 const CssTextField = styled(TextField)({
   '& label.Mui-focused': {
-    color: 'black', // Change label color on focus
+    color: 'black',
   },
   '& .MuiInput-underline:after': {
-    borderBottomColor: '#ffcc4b', // Change underline color on focus
+    borderBottomColor: '#ffcc4b',
   },
   '& .MuiOutlinedInput-root': {
     '& fieldset': {
-      borderColor: 'rgba(0, 0, 0, 0.23)', // Default outline color
+      borderColor: 'rgba(0, 0, 0, 0.23)',
     },
     '&:hover fieldset': {
-      borderColor: '#ffcc4b', // Change outline color on hover
+      borderColor: '#ffcc4b',
     },
     '&.Mui-focused fieldset': {
-      borderColor: '#ffcc4b', // Change outline color on focus
+      borderColor: '#ffcc4b',
     },
   },
   '&:hover': {
-    cursor: 'pointer !important', // Add cursor pointer on hover
+    cursor: 'pointer !important',
   },
+  marginBottom: '10px', // Add margin-bottom here
 });
+
 const Form = () => {
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState('');
@@ -72,7 +74,7 @@ const Form = () => {
     }
   }catch(err){
     setEmailError(true);
-    
+
   }
   };
   return (

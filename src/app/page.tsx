@@ -23,7 +23,7 @@ export default function Home() {
           <div className="text-center p-2 text-xl xl:text-2xl font-semibold">
             Send &nbsp;<span className="font-bold text-[#ffcc4b]">Personalized Messages&nbsp;</span>to your Linkedin connections.
           </div>
-          <div className="text-lg">Join the waiting list 🚀</div>
+          <div className="text-lg pt-10">Join the waiting list 🚀</div>
           <Form />
         </div>
         <div className="hidden xl:block" style={{ backgroundColor: '#fefcf3' }}>
