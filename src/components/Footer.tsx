@@ -24,7 +24,7 @@ const Footer = () => {
 
       {/* Instagram Icon */}
       <a
-        href='#'  // Add your Instagram profile link here
+        href='https://www.instagram.com/coldmessager/'  // Add your Instagram profile link here
         className='social-icon instagram transform transition-transform duration-300 hover:-translate-y-2 hover:text-yellow-500'
       >
         <FaInstagram className='text-4xl m-2' />
