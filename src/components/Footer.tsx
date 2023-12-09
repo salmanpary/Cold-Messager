@@ -1,35 +1,69 @@
 "use client";
 import React from 'react';
 import { FaLinkedin, FaTwitter, FaInstagram } from 'react-icons/fa';
+import Link from 'next/link';
 
 // Define the Footer component
 const Footer = () => {
   return (
-    <div className='flex  justify-center items-center my-10'>
-      {/* LinkedIn Icon */}
-      <a
-        href='https://www.linkedin.com/company/cold-messager/?lipi=urn%3Ali%3Apage%3Ad_flagship3_search_srp_companies%3BXVyiHlHhQL%2BQNt7Mz9jsEQ%3D%3D'  // Add your LinkedIn profile link here
-        className='social-icon linkedin transform transition-transform duration-300 hover:-translate-y-2 hover:text-yellow-500'
-      >
-        <FaLinkedin className='text-4xl m-2' />
-      </a>
+    <>
+    <div className='footer shadow text-white bg-gray-950 py-16 rounded-t-sm flex flex-col lg:justify-around items-center lg:flex-row gap-y-7'>
 
-      {/* Twitter Icon */}
-      <a
-        href='https://twitter.com/ColdM13955'  // Add your Twitter profile link here
-        className='social-icon twitter transform transition-transform duration-300 hover:-translate-y-2 hover:text-yellow-500'
-      >
-        <FaTwitter className='text-4xl m-2' />
-      </a>
+      <div className='flex flex-col justify-center items-center lg:items-start gap-y-3'>
 
-      {/* Instagram Icon */}
-      <a
-        href='https://www.instagram.com/coldmessager/'  // Add your Instagram profile link here
-        className='social-icon instagram transform transition-transform duration-300 hover:-translate-y-2 hover:text-yellow-500'
-      >
-        <FaInstagram className='text-4xl m-2' />
-      </a>
+        <div className='font-bold text-xl'>Cold Messager</div>
+        <div className='opacity-75 text-center'>We Help you optimize your <span className='text-[#ffcc4b] font-bold'> cold outreach</span> campaigns on Linkedin.</div>
+        <div className='hidden lg:block hover:text-[#ffcc4b] hover:cursor-pointer'>&copy; Cold Messager</div>
+      </div>
+        <div className='flex flex-col justify-center items-center'>
+          
+        <div className='flex gap-x-10 font-bold pb-5'>
+          <Link href='/'>
+            <div className='hover:text-[#ffcc4b] hover:cursor-pointer transform transition-transform duration-300 hover:-translate-y-2'>FAQ</div>
+          </Link>
+          <Link href='/'>
+            <div className='hover:text-[#ffcc4b] hover:cursor-pointer transform transition-transform duration-300 hover:-translate-y-2'>Contact Us</div>
+          </Link>
+        </div>
+
+        <div className='flex gap-x-10 font-bold'>
+          <Link href='/'>
+            <div className='hover:text-[#ffcc4b] hover:cursor-pointer transform transition-transform duration-300 hover:-translate-y-2'>Privacy Policy</div>
+          </Link>
+          <Link href='/'>
+            <div className='hover:text-[#ffcc4b] hover:cursor-pointer transform transition-transform duration-300 hover:-translate-y-2'>Terms and Conditions</div>
+          </Link>
+        </div>
+        </div>
+
+      <div className='flex justify-center items-center gap-x-3'>
+        {/* LinkedIn Icon */}
+        <a
+          href='https://www.linkedin.com/company/cold-messager/?lipi=urn%3Ali%3Apage%3Ad_flagship3_search_srp_companies%3BXVyiHlHhQL%2BQNt7Mz9jsEQ%3D%3D'
+          className='social-icon linkedin transform transition-transform duration-300 hover:-translate-y-2 hover:text-yellow-500'
+        >
+          <FaLinkedin className='text-4xl m-2' />
+        </a>
+
+        {/* Twitter Icon */}
+        <a
+          href='https://twitter.com/ColdM13955'
+          className='social-icon twitter transform transition-transform duration-300 hover:-translate-y-2 hover:text-yellow-500'
+        >
+          <FaTwitter className='text-4xl m-2' />
+        </a>
+
+        {/* Instagram Icon */}
+        <a
+          href='https://www.instagram.com/coldmessager/'
+          className='social-icon instagram transform transition-transform duration-300 hover:-translate-y-2 hover:text-yellow-500'
+        >
+          <FaInstagram className='text-4xl m-2' />
+        </a>
+      </div>
+      <div className='lg:hidden block hover:text-[#ffcc4b] hover:cursor-pointer'>&copy; Cold Messager</div>
     </div>
+    </>
   );
 };
 
