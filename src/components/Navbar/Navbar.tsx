@@ -19,7 +19,6 @@ import QuestionAnswerIcon from "@mui/icons-material/QuestionAnswer";
 import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
 import MenuBookIcon from "@mui/icons-material/MenuBook";
 import ContactMailIcon from "@mui/icons-material/ContactMail";
-
 const DownloadButton = styled(Button)(({ theme }) => ({
   width: "180px !important",
   height: "50px !important",
@@ -122,6 +121,8 @@ const Navbar = () => {
   return (
     <nav>
       <div className="flex items-center justify-between py-3 pl-2 pr-8 shadow-lg fixed top-0 z-50 w-screen bg-[#fefcf3]">
+        <Link href="/">
+       
         <img
           src="/cold-messager-logo-2.png"
           alt="Vercel Logo"
@@ -136,6 +137,7 @@ const Navbar = () => {
           width={200}
           height={200}
         />
+         </Link>
         <div className="flex items-center gap-x-11">
           <div className="hidden sm:flex gap-x-6">
             <Link href="/">
