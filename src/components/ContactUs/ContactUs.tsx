@@ -52,8 +52,8 @@ const ContactUs = () => {
             </Button>
             </div>
           </ContactPaper>
-          <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeWPvt8h_-57vTeQingstdLYO5m9NKSpwrQcVuP1I7JHi8QdA/viewform?embedded=true" width="380" height="380"  className='lg:hidden'>Loading…</iframe>
-          <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeWPvt8h_-57vTeQingstdLYO5m9NKSpwrQcVuP1I7JHi8QdA/viewform?embedded=true" width="600" height="600"  className='hidden lg:block'>Loading…</iframe>
+          <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeWPvt8h_-57vTeQingstdLYO5m9NKSpwrQcVuP1I7JHi8QdA/viewform?embedded=true" width="380" height="900"  className='lg:hidden'>Loading…</iframe>
+          <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeWPvt8h_-57vTeQingstdLYO5m9NKSpwrQcVuP1I7JHi8QdA/viewform?embedded=true" width="600" height="900"  className='hidden lg:block'>Loading…</iframe>
         </div>
       </div>
       <Footer />
