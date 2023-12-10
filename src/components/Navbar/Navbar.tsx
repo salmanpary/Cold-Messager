@@ -65,7 +65,7 @@ const Navbar = () => {
     {
       name: "Contact",
       icon: <ContactMailIcon style={{ color: "#ff40a5" }} />,
-      path: "/",
+      path: "/contact",
     },
   ];
 
@@ -138,18 +138,29 @@ const Navbar = () => {
         />
         <div className="flex items-center gap-x-11">
           <div className="hidden sm:flex gap-x-6">
+            <Link href="/">
             <Button
               color="inherit"
               sx={{ fontSize: 18, fontWeight: 600, textTransform: "none" }}
             >
               Home
             </Button>
+            </Link>
             <Button
               color="inherit"
               sx={{ fontSize: 18, fontWeight: 600, textTransform: "none" }}
             >
               Pricing
             </Button>
+            <Link href="/contact">
+            <Button
+              color="inherit"
+              sx={{ fontSize: 18, fontWeight: 600, textTransform: "none" }}
+            >
+              Contact
+            </Button>
+            </Link>
+            
             <Button
               color="inherit"
               sx={{ fontSize: 18, fontWeight: 600, textTransform: "none" }}
