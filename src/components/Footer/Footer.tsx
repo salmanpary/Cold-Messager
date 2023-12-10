@@ -27,10 +27,10 @@ const Footer = () => {
         </div>
 
         <div className='flex gap-x-10 font-bold'>
-          <Link href='/'>
+          <Link href='/privacy'>
             <div className='hover:text-[#ffcc4b] hover:cursor-pointer transform transition-transform duration-300 hover:-translate-y-2'>Privacy Policy</div>
           </Link>
-          <Link href='/'>
+          <Link href='/terms'>
             <div className='hover:text-[#ffcc4b] hover:cursor-pointer transform transition-transform duration-300 hover:-translate-y-2'>Terms and Conditions</div>
           </Link>
         </div>

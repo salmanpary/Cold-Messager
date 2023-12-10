@@ -1,5 +1,5 @@
 import React from 'react'
-import Form from '../Form'
+import Form from './Form'
 const BodyPart = () => {
   return (
     <div className="flex flex-col-reverse xl:flex-row m-2 mt-20 lg:mt-40 mb-20">

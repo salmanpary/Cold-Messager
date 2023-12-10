@@ -1,7 +1,7 @@
 "use client"
 import React from 'react';
 import Navbar from '../Navbar/Navbar';
-import Footer from '../Footer';
+import Footer from '../Footer/Footer';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -52,8 +52,8 @@ const ContactUs = () => {
             </Button>
             </div>
           </ContactPaper>
-          <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeWPvt8h_-57vTeQingstdLYO5m9NKSpwrQcVuP1I7JHi8QdA/viewform?embedded=true" width="380" height="900"  className='lg:hidden'></iframe>
-          <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeWPvt8h_-57vTeQingstdLYO5m9NKSpwrQcVuP1I7JHi8QdA/viewform?embedded=true" width="600" height="900"  className='hidden lg:block'></iframe>
+          <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeWPvt8h_-57vTeQingstdLYO5m9NKSpwrQcVuP1I7JHi8QdA/viewform?embedded=true" width="380" height="900"  className='lg:hidden p-6'></iframe>
+          <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeWPvt8h_-57vTeQingstdLYO5m9NKSpwrQcVuP1I7JHi8QdA/viewform?embedded=true" width="600" height="900"  className='hidden lg:block p-6'></iframe>
         </div>
       </div>
       <Footer />

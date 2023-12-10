@@ -49,7 +49,7 @@ const Navbar = () => {
     {
       name: "Pricing",
       icon: <AccountBalanceWalletIcon style={{ color: "#ff40a5" }} />,
-      path: "/",
+      path: "/pricing",
     },
     {
       name: "Blog",
@@ -148,12 +148,14 @@ const Navbar = () => {
               Home
             </Button>
             </Link>
+            <Link href="/pricing">
             <Button
               color="inherit"
               sx={{ fontSize: 18, fontWeight: 600, textTransform: "none" }}
             >
               Pricing
             </Button>
+            </Link>
             <Link href="/contact">
             <Button
               color="inherit"
