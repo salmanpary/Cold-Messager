@@ -20,7 +20,7 @@ const ContactUs = () => {
   return (
     <>
       <Navbar />
-      <div className='mt-28 flex flex-col lg:flex-row-reverse justify-between items-start mb-10'>
+      <div className='mt-32 flex flex-col lg:flex-row-reverse justify-between items-start mb-14'>
         <img src='contact.jpg' alt='contact' height={450} width={450} className="lg:hidden"/>
         <img src='contact.jpg' alt='contact' height={600} width={600} className="hidden lg:block"/>
         <div>

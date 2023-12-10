@@ -21,7 +21,7 @@ const Footer = () => {
           <Link href='/'>
             <div className='hover:text-[#ffcc4b] hover:cursor-pointer transform transition-transform duration-300 hover:-translate-y-2'>FAQ</div>
           </Link>
-          <Link href='/'>
+          <Link href='/contact'>
             <div className='hover:text-[#ffcc4b] hover:cursor-pointer transform transition-transform duration-300 hover:-translate-y-2'>Contact Us</div>
           </Link>
         </div>
