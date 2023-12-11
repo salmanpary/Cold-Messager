@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Inter } from "next/font/google";
 import GoogleAnalytics from "../components/GoogleAnalytics/GoogleAnalytics";
+import Script from "next/script";
 const inter = Inter({
   weight: "400",
   subsets: ["latin"],
@@ -20,6 +21,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
+    <>
     <html lang="en">
       <body className={inter.className}>
         {process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS ? (
@@ -31,5 +33,7 @@ export default function RootLayout({
         {children}
       </body>
     </html>
+    <Script src="https://checkout.razorpay.com/v1/checkout.js"/>
+    </>
   );
 }
