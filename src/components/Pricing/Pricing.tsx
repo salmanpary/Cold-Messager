@@ -9,6 +9,8 @@ const Pricing = () => {
     const pricing = [
         {
             name: 'Free',
+            indian_original_price: 417,
+            indian_discount_price: 0,
             originalprice: 5,
             discountprice: 0,
             features: ['Send 5 crafted messages.'],
@@ -26,6 +28,8 @@ const Pricing = () => {
         },
         {
             name: 'Starter',
+            indian_original_price: 1250,
+            indian_discount_price: 834,
             originalprice: 15,
             discountprice: 10,
             features: ['Send 100 crafted messages per month'],
@@ -40,6 +44,8 @@ const Pricing = () => {
         },
         {
             name: 'Pro',
+            indian_original_price: 4169,
+            indian_discount_price: 1668,
             originalprice: 50,
             discountprice: 20,
             features: ['Send unlimited messages per month'],
@@ -68,6 +74,8 @@ const Pricing = () => {
                         <React.Fragment key={index}>
                             <PricingComponent
                                 name={price.name}
+                                indian_original_price={price.indian_original_price}
+                                indian_discount_price={price.indian_discount_price}
                                 originalprice={price.originalprice}
                                 discountprice={price.discountprice}
                                 features={price.features}
