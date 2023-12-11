@@ -54,7 +54,7 @@ const Navbar = () => {
     {
       name: "Blog",
       icon: <MenuBookIcon style={{ color: "#ff40a5" }} />,
-      path: "/blogg",
+      path: "/blog",
     },
     {
       name: "Faq",
