@@ -164,13 +164,14 @@ const Navbar = () => {
               Contact
             </Button>
             </Link>
-            
+            <Link href="/blog">
             <Button
               color="inherit"
               sx={{ fontSize: 18, fontWeight: 600, textTransform: "none" }}
             >
               Blog
             </Button>
+            </Link>
           </div>
           <DownloadButton
             variant="contained"

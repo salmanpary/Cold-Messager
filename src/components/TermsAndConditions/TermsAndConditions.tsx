@@ -125,7 +125,15 @@ const TermsAndConditions = () => {
 <p>The limitations and prohibitions of liability set in this Section and elsewhere in this disclaimer: (a) are subject to the preceding paragraph; and (b) govern all liabilities arising under the disclaimer, including liabilities arising in contract, in tort and for breach of statutory duty.</p>
 
 <p>As long as the website and the information and services on the website are provided free of charge, we will not be liable for any loss or damage of any nature.</p>
+<h3><strong>Subscription Cancellation:</strong></h3>
+<div>Users have the option to cancel their subscription at any time. The cancellation will take effect at the end of the current billing cycle. To cancel a subscription, users can log in to their account on our website and follow the cancellation process outlined in the user dashboard.</div>
+<h3><strong>Refund Policy:</strong></h3>
+<div>
+If a user cancels their subscription, they will not be billed for the following month. Refunds will not be issued for the current billing cycle, and services will continue until the end of the paid period. Users will retain access to the subscription features until the end of the paid period, after which their access will be discontinued.
+</div>
+<div>
 
+</div>
        
       </div>
       <Footer />

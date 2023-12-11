@@ -10,7 +10,7 @@ import EmailIcon from '@mui/icons-material/Email';
 import CallIcon from '@mui/icons-material/Call';
 import Stack from '@mui/material/Stack';
 import { styled } from '@mui/material/styles';
-
+import MyLocationIcon from '@mui/icons-material/MyLocation';
 const ContactPaper = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(3),
   margin: theme.spacing(3),
@@ -29,6 +29,16 @@ const ContactUs = () => {
             <Typography variant="h5" sx={{ fontWeight: 'bold', marginBottom: 2 }}>
               Contact Information
             </Typography>
+            <div>
+            <Button sx={{ textTransform: "none", color: "#ff40a5" }} href="https://maps.app.goo.gl/HzFdeP21YkSefGuw6">
+              <Stack direction="row" spacing={2} alignItems="center">
+                <MyLocationIcon sx={{ fontSize: 30, color: '#ff40a5' }} />
+                <Typography variant="body1" sx={{ fontWeight: 'bold' ,fontSize: 20}}>
+                  Model Engineering College, Thrikkakara, Kochi, Kerala 682021
+                </Typography>
+              </Stack>
+            </Button>
+            </div>
             <div>
 
             <Button sx={{ textTransform: "none", color: "#ff40a5" }} href="mailto:salmanpary@gmail.com">

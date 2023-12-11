@@ -13,27 +13,48 @@ const Footer = () => {
 
         <div className='font-bold text-xl'>Cold Messager</div>
         <div className='opacity-75 text-center'>We Help you optimize your <span className='text-[#ffcc4b] font-bold'> cold outreach</span> campaigns on Linkedin.</div>
-        <div className='hidden lg:block hover:text-[#ffcc4b] hover:cursor-pointer'>&copy; Cold Messager</div>
+     <Link href="/"> <div className='hidden lg:block hover:text-[#ffcc4b] hover:cursor-pointer'>&copy; Cold Messager</div></Link>  
       </div>
         <div className='flex flex-col justify-center items-center'>
           
         <div className='flex gap-x-10 font-bold pb-5'>
           <Link href='/'>
-            <div className='hover:text-[#ffcc4b] hover:cursor-pointer transform transition-transform duration-300 hover:-translate-y-2'>FAQ</div>
+            <div className='hover:text-[#ffcc4b] hover:cursor-pointer transform transition-transform duration-300 hover:-translate-y-2'>Home</div>
           </Link>
-          <Link href='/contact'>
-            <div className='hover:text-[#ffcc4b] hover:cursor-pointer transform transition-transform duration-300 hover:-translate-y-2'>Contact Us</div>
+          <Link href='/pricing'>
+            <div className='hover:text-[#ffcc4b] hover:cursor-pointer transform transition-transform duration-300 hover:-translate-y-2'>Pricing</div>
           </Link>
         </div>
 
         <div className='flex gap-x-10 font-bold'>
+          <Link href='/contact'>
+            <div className='hover:text-[#ffcc4b] hover:cursor-pointer transform transition-transform duration-300 hover:-translate-y-2'>Contact Us</div>
+          </Link>
+          <Link href='/blog'>
+            <div className='hover:text-[#ffcc4b] hover:cursor-pointer transform transition-transform duration-300 hover:-translate-y-2'>Blog</div>
+          </Link>
+        </div>
+        
+        
+        </div>
+        <div className='flex flex-col justify-center items-center'>
+        <div className='flex gap-x-10 font-bold'>
+          <Link href='/about'>
+            <div className='hover:text-[#ffcc4b] hover:cursor-pointer transform transition-transform duration-300 hover:-translate-y-2'>About Us</div>
+          </Link>
+        </div>
+        <div className='flex gap-x-10 font-bold pt-5'>
+          <Link href='/terms'>
+            <div className='hover:text-[#ffcc4b] hover:cursor-pointer transform transition-transform duration-300 hover:-translate-y-2'>Terms And Conditions</div>
+          </Link>
           <Link href='/privacy'>
             <div className='hover:text-[#ffcc4b] hover:cursor-pointer transform transition-transform duration-300 hover:-translate-y-2'>Privacy Policy</div>
           </Link>
-          <Link href='/terms'>
-            <div className='hover:text-[#ffcc4b] hover:cursor-pointer transform transition-transform duration-300 hover:-translate-y-2'>Terms and Conditions</div>
-          </Link>
         </div>
+
+       
+        
+        
         </div>
 
       <div className='flex justify-center items-center gap-x-3'>
