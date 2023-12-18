@@ -45,7 +45,8 @@ const Form = () => {
   };
 
   const handleEmailChange = (event) => {
-    setEmail(event.target.value);
+    const trimmedEmail = event.target.value.trim();
+    setEmail(trimmedEmail);
     setEmailError(false);
     setSubmissionSuccess(false);
   };
@@ -53,6 +54,7 @@ const Form = () => {
   const validateEmail = () => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const isValidEmail = emailRegex.test(email);
+
 
     setEmailError(!isValidEmail);
   };
@@ -67,7 +69,7 @@ const Form = () => {
       setEmailError(true);
       return;
     }
-
+   
     validateEmail();
 
     try {
