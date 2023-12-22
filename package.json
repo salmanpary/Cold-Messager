@@ -17,6 +17,7 @@
     "axios": "^1.6.2",
     "contentful": "^10.6.14",
     "crypto": "^1.0.1",
+    "date-fns": "^3.0.5",
     "firebase": "^10.7.1",
     "firebase-admin": "^12.0.0",
     "formik": "^2.4.5",
