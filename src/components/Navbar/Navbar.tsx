@@ -19,6 +19,10 @@ import QuestionAnswerIcon from "@mui/icons-material/QuestionAnswer";
 import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
 import MenuBookIcon from "@mui/icons-material/MenuBook";
 import ContactMailIcon from "@mui/icons-material/ContactMail";
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 const DownloadButton = styled(Button)(({ theme }) => ({
   width: "180px !important",
   height: "50px !important",
@@ -40,6 +44,14 @@ const DownloadButton = styled(Button)(({ theme }) => ({
 type Anchor = "right";
 
 const Navbar = () => {
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
   const navbarItems = [
     {
       name: "Home",
@@ -156,14 +168,14 @@ const Navbar = () => {
               Pricing
             </Button>
             </Link>
-            <Link href="/contact">
+            {/* <Link href="/contact">
             <Button
               color="inherit"
               sx={{ fontSize: 18, fontWeight: 600, textTransform: "none" }}
             >
               Contact
             </Button>
-            </Link>
+            </Link> */}
             <Link href="/blog">
             <Button
               color="inherit"
@@ -172,6 +184,36 @@ const Navbar = () => {
               Blog
             </Button>
             </Link>
+       
+          <Button
+        aria-controls={open ? 'basic-menu' : undefined}
+        aria-haspopup="true"
+        aria-expanded={open ? 'true' : undefined}
+        onClick={handleClick}
+        sx={{ fontSize: 18, fontWeight: 600, textTransform: "none",color:"black" }}
+        endIcon={<ArrowDropDownIcon />}
+        startIcon={<ManageAccountsIcon />}
+      >
+        Profile 
+      </Button>
+      <Menu
+        id="basic-menu"
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleClose}
+        MenuListProps={{
+          'aria-labelledby': 'basic-button',
+        }}
+       
+      >
+        <Link href="/profile/new-template">
+        <MenuItem onClick={handleClose}  sx={{fontWeight:600}}>New Template</MenuItem>
+        </Link>
+        <Link href="/profile/saved-templates">
+        <MenuItem onClick={handleClose}  sx={{fontWeight:600}}>Saved Templates</MenuItem>
+        </Link>
+        <MenuItem onClick={handleClose}  sx={{fontWeight:600}}>Logout</MenuItem>
+      </Menu>
           </div>
           <DownloadButton
             variant="contained"
@@ -180,6 +222,10 @@ const Navbar = () => {
           >
             Download
           </DownloadButton>
+          <div>
+     
+    </div>
+
         </div>
         <Hidden smUp>
           <IconButton
