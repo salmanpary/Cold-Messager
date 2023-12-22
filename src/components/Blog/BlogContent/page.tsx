@@ -1,6 +1,6 @@
 import { formatDistanceToNow } from "date-fns";
 import Image from "next/image";
-import RichText from "../Contentful/RichText/page";
+import RichText from "../../Contentful/RichText/page";
 
 const BlogContent = ({ blog }) => {
 	return (

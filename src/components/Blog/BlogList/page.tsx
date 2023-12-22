@@ -1,7 +1,7 @@
 import React from "react";
-import Navbar from "../Navbar/Navbar";
-import Footer from "../Footer/Footer";
-import { getBlogs } from "../../lib/graphql/functions";
+import Navbar from "../../Navbar/Navbar";
+import Footer from "../../Footer/Footer";
+import { getBlogs } from "../../../lib/graphql/functions";
 import BlogCard from "../BlogCard/page";
 
 type Blog = {
