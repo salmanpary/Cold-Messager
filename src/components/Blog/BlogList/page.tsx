@@ -17,7 +17,7 @@ type Blog = {
 	};
 };
 
-const BlogList = async () => {
+const BlogList:any = async () => {
 	const blogs = await getBlogs();
 	return (
 		<div className="mt-28 p-5 min-h-screen">
