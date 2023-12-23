@@ -1,7 +1,5 @@
 "use client"
 import React from 'react';
-import Navbar from '../Navbar/Navbar';
-import Footer from '../Footer/Footer';
 import PricingComponent from './PricingComponent';
 import { Stack } from '@mui/system';
 import { Button } from '@mui/material';
@@ -163,8 +161,7 @@ const Pricing = () => {
     ];
 
     return (
-        <>
-            <Navbar />
+
             <div className='mt-28 h-auto xl:h-[80vh]'>
                 <div className='text-5xl font-bold pl-6'>Pricing</div>
                 <Stack
@@ -187,8 +184,7 @@ const Pricing = () => {
                     ))}
                 </Stack>
             </div>
-            <Footer />
-        </>
+   
     );
 };
 
