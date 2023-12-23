@@ -21,7 +21,7 @@ const BlogCard = ({ blog }) => {
 								alt={blog.authorName}
 								width={40}
 								height={40}
-								className="rounded-full object-cover w-10 h-10 overflow-hidden"
+								className="rounded-full object-cover w-10 h-10 overflow-hidden self-start"
 							/>
 							<div className="flex flex-col gap-2 mb-4 sm:flex-row sm:justify-between sm:w-full">
 								<div className="flex flex-col">
