@@ -51,7 +51,7 @@ const NewTemplate = () => {
   
   return (
     <div>
-      <Navbar />
+      {/* <Navbar /> */}
       <div className="mt-32 p-5">
         <div className="flex flex-col gap-y-3">
           <div className="text-3xl font-bold">New Template</div>
@@ -145,7 +145,7 @@ const NewTemplate = () => {
           </div>
         </div>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };

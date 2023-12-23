@@ -4,7 +4,7 @@ import Footer from '../../../../components/Footer/Footer'
 const EditTemplate = () => {
   return (
    <div>
-    <Navbar />
+    {/* <Navbar /> */}
     <div className='mt-28 p-5'>
     <div className='text-3xl font-bold'>
             Edit Template
@@ -14,8 +14,8 @@ const EditTemplate = () => {
         
         </div>
         </div>
-
-    <Footer />
+{/* 
+    <Footer /> */}
    </div>
   )
 }

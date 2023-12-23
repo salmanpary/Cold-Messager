@@ -47,7 +47,7 @@ const SavedTemplates = () => {
 
   return (
     <div>
-      <Navbar />
+      {/* <Navbar /> */}
       <div className="mt-32 px-10 py-5">
         <div className="text-3xl font-bold">Saved Templates</div>
         <div className="mt-10">
@@ -96,7 +96,7 @@ const SavedTemplates = () => {
           </TableContainer>
         </div>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };

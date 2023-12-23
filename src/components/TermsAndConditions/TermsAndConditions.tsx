@@ -4,7 +4,7 @@ import Footer from '../Footer/Footer'
 const TermsAndConditions = () => {
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <div className="mt-28 p-10">
         <div className="text-3xl font-bold pb-4">Terms And Conditions</div>
 
@@ -136,7 +136,7 @@ If a user cancels their subscription, they will not be billed for the following 
 </div>
        
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }
