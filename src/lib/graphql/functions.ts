@@ -1,4 +1,5 @@
 // functions.ts
+//test
 
 import { GET_BLOGS_QUERY } from "./queries";
 
