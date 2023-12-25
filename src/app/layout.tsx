@@ -5,6 +5,7 @@ import GoogleAnalytics from "../components/GoogleAnalytics/GoogleAnalytics";
 import Script from "next/script";
 import Navbar from "../components/Navbar/Navbar";
 import Footer from "../components/Footer/Footer";
+import AuthProvider from "./contexts/AuthProvider";
 const inter = Inter({
 	weight: "400",
 	subsets: ["latin"],
@@ -26,19 +27,21 @@ export default function RootLayout({
 	return (
 		<>
 			<html lang="en">
-				<body className={inter.className}>
-					{process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS ? (
-						<GoogleAnalytics
-							GA_TRACKING_ID={
-								process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS
-							}
-						/>
-					) : null}
-					<GoogleAnalytics GA_TRACKING_ID="G-NFW7NHNJMX" />
-					<Navbar />
-					{children}
-					<Footer />
-				</body>
+				<AuthProvider>
+					<body className={inter.className}>
+						{process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS ? (
+							<GoogleAnalytics
+								GA_TRACKING_ID={
+									process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS
+								}
+							/>
+						) : null}
+						<GoogleAnalytics GA_TRACKING_ID="G-NFW7NHNJMX" />
+						<Navbar />
+						{children}
+						<Footer />
+					</body>
+				</AuthProvider>
 			</html>
 			<Script src="https://checkout.razorpay.com/v1/checkout.js" />
 		</>
