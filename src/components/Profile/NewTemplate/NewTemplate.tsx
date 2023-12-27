@@ -1,12 +1,12 @@
 "use client";
 import React,{useState,useRef,useEffect} from "react";
-import Navbar from "../../Navbar/Navbar";
-import Footer from "../../Footer/Footer";
 import { TextField } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
 import SaveIcon from "@mui/icons-material/Save";
 import { styled } from "@mui/system";
 import Button from "@mui/material/Button";
+import axios from "axios";
+
 const CssTextField = styled(TextField)({
   "& label.Mui-focused": {
     color: "black",
@@ -29,14 +29,30 @@ const CssTextField = styled(TextField)({
 const NewTemplate = () => {
   // Text before {{name}}
   const [loading ,setLoading] = useState(false)
- const handleButtonClick = () => {
+ const handleButtonClick = async() => {
+  try{
     setLoading(true)
-    setTimeout(() => {
-      setLoading(false)
-    }, 2000);
+    const user= JSON.parse(localStorage.getItem("user"))
+    const data = {
+      user,
+      template_name:templateName,
+      template_string:templateContent
+    }
+    const resp= await axios.post("/api/savetemplate",data)
+    console.log(resp)
+    setTemplateName("")
+    setTemplateContent("")
+
+
+  }catch(err){
+    console.log(err)
+  }finally{
+    setLoading(false)
+  }
 
  }
   const [templateContent, setTemplateContent] = useState("");
+  const [templateName,setTemplateName] = useState("")
   const templateRef = useRef(null);
  
   const prefixText =
@@ -48,7 +64,14 @@ const NewTemplate = () => {
       templateRef.current.focus();
       console.log(templateRef);
     }
-  
+   const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      // Append a newline character to the template content
+      setTemplateContent((prev) => prev + '\n');
+      // Prevent the default behavior of the Enter key
+      e.preventDefault();
+    }
+   }
   return (
     <div>
       {/* <Navbar /> */}
@@ -62,7 +85,9 @@ const NewTemplate = () => {
           </div>
           <div>
 
-<CssTextField label="Template Name" placeholder="Template Name,Eg:sales-template" sx={{width:"30ch"}}></CssTextField>
+<CssTextField label="Template Name" placeholder="Template Name,Eg:sales-template" sx={{width:"30ch"}} onChange={(e)=>{
+  setTemplateName(e.target.value)
+}} value={templateName}></CssTextField>
 </div>
           <div>
             <Button sx={{ textTransform: "none",color:"#ff40a5" }}   onClick={() => insertTemplateVariable("{{name}}")} >{`{{name}}`}</Button>
@@ -122,6 +147,7 @@ const NewTemplate = () => {
   onChange={(e) => setTemplateContent(e.target.value)}
   // ref={templateRef}
   inputRef={templateRef}
+  onKeyDown={handleKeyDown}
 ></CssTextField>
          
           <div className="w-[70%] flex justify-end">

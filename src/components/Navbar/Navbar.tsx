@@ -35,6 +35,7 @@ import {
 import {auth} from "../../lib/auth/firebase"
 import firebase from "firebase/app";
 import { set } from "date-fns";
+import axios from "axios";
 const DownloadButton = styled(Button)(({ theme }) => ({
   width: "180px !important",
   height: "50px !important",
@@ -177,23 +178,39 @@ const Navbar = () => {
       </List>
     </Box>
   );
-  const googleSignIn = () => {
-    setLoading(true)
+  const storeUser = async (user: User) => {
+    try{
+      setLoading(true)
+      setUser(user)
+      console.log(user.displayName)
+      const response=await axios.post("/api/signin",user)
+      console.log(response)
+    }catch(error){
+      console.log(error)
+    }finally{
+      setLoading(false)
+    }
+  }
+  const googleSignIn = async() => {
     const provider = new GoogleAuthProvider();
-    signInWithPopup(auth, provider)
-    setLoading(false)
+    const res=await signInWithPopup(auth, provider)
+    const user=res.user
+    if(user!=null){
+      storeUser(user)
+    }
+   
   };
 
-  const logOut = () => {
-    signOut(auth);
+  const logOut = async() => {
+    await signOut(auth);
   };
-
+  
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
 
       setUser(currentUser);
+
       localStorage.setItem("user", JSON.stringify(currentUser));
-      console.log(currentUser);
     });
     return () => unsubscribe();
   }, [user]);
@@ -206,16 +223,17 @@ const Navbar = () => {
      setIsLogin(false)
       await googleSignIn();
       setIsLogin(true)
-      setLoading(false)
-
+      
 
 
     } catch (error) {
       
       console.log(error);
-      setLoading(false)
       setIsLogin(false)
       setUser(null)
+    }finally{
+      setLoading(false)
+
     }
   };
 
@@ -225,26 +243,27 @@ const Navbar = () => {
       await logOut();
       localStorage.removeItem("user");
       setUser(null);
-      setIsLogin(false)
-      setLoading(false)
     } catch (error) {
       console.log(error);
-    }
-  };
-  useEffect(() => {
-    if (user!=null) {
-      setIsLogin(true)
-      setLoading(false)
-    } else {
+    }finally{
       setIsLogin(false)
       setLoading(false)
     }
-  },[user])
-  useEffect(() => {
-    console.log(isLogin)
-    console.log(user)
+  };
+const getUser=async()=>{
+  setLoading(true)
+  const user_details=await localStorage.getItem("user")
+  const user_details_json=JSON.parse(user_details!)
+  if(user_details_json!=null){
+    setUser(user_details_json)
+    setIsLogin(true)
   }
-  ,[loading,isLogin,user])
+  setLoading(false)
+
+}
+useEffect(() => {
+  getUser()
+},[])
   const ProfileMenu=(loading:boolean,isLogin:boolean)=>{
     if(loading){
       return <Skeleton variant="rounded" width={100} height={40} />
