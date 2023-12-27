@@ -22,11 +22,19 @@ import ContactMailIcon from "@mui/icons-material/ContactMail";
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import { useRouter } from "next/navigation";
 import Image from 'next/image'
 import Skeleton from '@mui/material/Skeleton';
 import GoogleIcon from '@mui/icons-material/Google';
+import {
+  signInWithPopup,
+  signOut,
+  onAuthStateChanged,
+  GoogleAuthProvider,
+} from "firebase/auth";
+import {auth} from "../../lib/auth/firebase"
+import firebase from "firebase/app";
+import { set } from "date-fns";
 const DownloadButton = styled(Button)(({ theme }) => ({
   width: "180px !important",
   height: "50px !important",
@@ -46,26 +54,44 @@ const DownloadButton = styled(Button)(({ theme }) => ({
 }));
 
 type Anchor = "right";
-type User={
-  sub:string,
-  name:string,
-  given_name:string,
-  family_name:string,
-  picture:string,
-  email:string,
-  email_verified:boolean,
-  locale:{
-    country:string,
-    language:string
-  },
-
-  
+interface ProviderData {
+  providerId: string;
+  uid: string;
+  displayName: string;
+  email: string;
+  phoneNumber: string | null;
+  photoURL: string;
 }
 
+interface StsTokenManager {
+  refreshToken: string;
+  accessToken: string;
+  expirationTime: number;
+}
+
+interface User {
+  acessToken?: string;
+  apiKey?: string;
+  createdAt?: string;
+
+  displayName: string;
+  email: string;
+  emailVerified: boolean;
+  isAnonymous: boolean;
+  lastLoginAt?: string;
+  photoURL: string|null;
+  providerData: ProviderData[];
+  providerId: string;
+  stsTokenManager?: StsTokenManager;
+  tenantId?: string|null;
+  uid: string;
+
+
+}
 const Navbar = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const [isLogin, setIsLogin] = useState<boolean>(false);
-  const [user, setUser] = useState<User| Record<string, never>>({});
+  const [user, setUser] = useState<User|null>(null);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -151,27 +177,81 @@ const Navbar = () => {
       </List>
     </Box>
   );
-  const getUser=async ()=>{
-    setLoading(true);
-    const user = localStorage.getItem("user");
-    const user_data=JSON.parse(user);
-    if(user_data){
-      setUser(user_data);
-      setIsLogin(true);
-    }
-    setLoading(false);
-  }
-  useEffect(() => {
-    getUser();
-  },[])
+  const googleSignIn = () => {
+    setLoading(true)
+    const provider = new GoogleAuthProvider();
+    signInWithPopup(auth, provider)
+    setLoading(false)
+  };
 
-  const router = useRouter();
+  const logOut = () => {
+    signOut(auth);
+  };
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+
+      setUser(currentUser);
+      localStorage.setItem("user", JSON.stringify(currentUser));
+      console.log(currentUser);
+    });
+    return () => unsubscribe();
+  }, [user]);
+
+
+  const handleSignIn = async () => {
+    try {
+     setLoading(true)
+     setUser(null)
+     setIsLogin(false)
+      await googleSignIn();
+      setIsLogin(true)
+      setLoading(false)
+
+
+
+    } catch (error) {
+      
+      console.log(error);
+      setLoading(false)
+      setIsLogin(false)
+      setUser(null)
+    }
+  };
+
+  const handleSignOut = async () => {
+    try {
+      setLoading(true)
+      await logOut();
+      localStorage.removeItem("user");
+      setUser(null);
+      setIsLogin(false)
+      setLoading(false)
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    if (user!=null) {
+      setIsLogin(true)
+      setLoading(false)
+    } else {
+      setIsLogin(false)
+      setLoading(false)
+    }
+  },[user])
+  useEffect(() => {
+    console.log(isLogin)
+    console.log(user)
+  }
+  ,[loading,isLogin,user])
   const ProfileMenu=(loading:boolean,isLogin:boolean)=>{
     if(loading){
       return <Skeleton variant="rounded" width={100} height={40} />
     }
     else{
-      if(isLogin){
+      if(isLogin&&user!=null){
+        console.log(user)
         return <>
          <Button
         aria-controls={open ? 'basic-menu' : undefined}
@@ -180,9 +260,9 @@ const Navbar = () => {
         onClick={handleClick}
         sx={{ fontSize: 18, fontWeight: 600, textTransform: "none",color:"black" }}
         endIcon={<ArrowDropDownIcon />}
-        startIcon={<Image src={user.picture} alt="Profile Picture" width={30} height={30} className="rounded-full"/>}
+        startIcon={<Image src={user?.photoURL} alt="Profile Picture" width={30} height={30} className="rounded-full"/>}
       >
-       {user.name}
+       {user?.displayName}
       </Button>
   <Menu
     id="basic-menu"
@@ -200,7 +280,10 @@ const Navbar = () => {
     <Link href="/profile/saved-templates">
     <MenuItem onClick={handleClose}  sx={{fontWeight:600}}>Saved Templates</MenuItem>
     </Link>
-    <MenuItem onClick={handleClose}  sx={{fontWeight:600}}>Logout</MenuItem>
+    <MenuItem onClick={()=>{
+      handleClose()
+      handleSignOut()
+    }}  sx={{fontWeight:600}} >Logout</MenuItem>
   </Menu>
         </>
       }
@@ -209,6 +292,7 @@ const Navbar = () => {
           color="inherit"
           sx={{ fontSize: 18, fontWeight: 600, textTransform: "none",color:"#ff40a5" }}
           startIcon={<GoogleIcon sx={{fontSize:18,color:"#ff40a5"}}/>}
+          onClick={handleSignIn}
         >
           Login
         </Button>
@@ -256,14 +340,6 @@ const Navbar = () => {
               Pricing
             </Button>
             </Link>
-            {/* <Link href="/contact">
-            <Button
-              color="inherit"
-              sx={{ fontSize: 18, fontWeight: 600, textTransform: "none" }}
-            >
-              Contact
-            </Button>
-            </Link> */}
             <Link href="/blog">
             <Button
               color="inherit"
