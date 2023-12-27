@@ -5,6 +5,7 @@ import GoogleAnalytics from "../components/GoogleAnalytics/GoogleAnalytics";
 import Script from "next/script";
 import Navbar from "../components/Navbar/Navbar";
 import Footer from "../components/Footer/Footer";
+
 const inter = Inter({
 	weight: "400",
 	subsets: ["latin"],
@@ -23,6 +24,7 @@ export default function RootLayout({
 }: {
 	children: React.ReactNode;
 }) {
+
 	return (
 		<>
 			<html lang="en">

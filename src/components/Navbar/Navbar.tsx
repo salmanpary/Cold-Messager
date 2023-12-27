@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import Link from "next/link"; // Import Link from Next.js
 import Button from "@mui/material/Button";
 import DownloadDoneRoundedIcon from "@mui/icons-material/DownloadDoneRounded";
@@ -22,7 +22,11 @@ import ContactMailIcon from "@mui/icons-material/ContactMail";
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
-import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import { useRouter } from "next/navigation";
+import Image from 'next/image'
+import Skeleton from '@mui/material/Skeleton';
+import GoogleIcon from '@mui/icons-material/Google';
 const DownloadButton = styled(Button)(({ theme }) => ({
   width: "180px !important",
   height: "50px !important",
@@ -42,8 +46,26 @@ const DownloadButton = styled(Button)(({ theme }) => ({
 }));
 
 type Anchor = "right";
+type User={
+  sub:string,
+  name:string,
+  given_name:string,
+  family_name:string,
+  picture:string,
+  email:string,
+  email_verified:boolean,
+  locale:{
+    country:string,
+    language:string
+  },
+
+  
+}
 
 const Navbar = () => {
+  const [loading, setLoading] = useState<boolean>(true);
+  const [isLogin, setIsLogin] = useState<boolean>(false);
+  const [user, setUser] = useState<User| Record<string, never>>({});
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -129,8 +151,74 @@ const Navbar = () => {
       </List>
     </Box>
   );
+  const getUser=async ()=>{
+    setLoading(true);
+    const user = localStorage.getItem("user");
+    const user_data=JSON.parse(user);
+    if(user_data){
+      setUser(user_data);
+      setIsLogin(true);
+    }
+    setLoading(false);
+  }
+  useEffect(() => {
+    getUser();
+  },[])
 
+  const router = useRouter();
+  const ProfileMenu=(loading:boolean,isLogin:boolean)=>{
+    if(loading){
+      return <Skeleton variant="rounded" width={100} height={40} />
+    }
+    else{
+      if(isLogin){
+        return <>
+         <Button
+        aria-controls={open ? 'basic-menu' : undefined}
+        aria-haspopup="true"
+        aria-expanded={open ? 'true' : undefined}
+        onClick={handleClick}
+        sx={{ fontSize: 18, fontWeight: 600, textTransform: "none",color:"black" }}
+        endIcon={<ArrowDropDownIcon />}
+        startIcon={<Image src={user.picture} alt="Profile Picture" width={30} height={30} className="rounded-full"/>}
+      >
+       {user.name}
+      </Button>
+  <Menu
+    id="basic-menu"
+    anchorEl={anchorEl}
+    open={open}
+    onClose={handleClose}
+    MenuListProps={{
+      'aria-labelledby': 'basic-button',
+    }}
+   
+  >
+    <Link href="/profile/new-template">
+    <MenuItem onClick={handleClose}  sx={{fontWeight:600}}>New Template</MenuItem>
+    </Link>
+    <Link href="/profile/saved-templates">
+    <MenuItem onClick={handleClose}  sx={{fontWeight:600}}>Saved Templates</MenuItem>
+    </Link>
+    <MenuItem onClick={handleClose}  sx={{fontWeight:600}}>Logout</MenuItem>
+  </Menu>
+        </>
+      }
+      else{
+        return <Button
+          color="inherit"
+          sx={{ fontSize: 18, fontWeight: 600, textTransform: "none",color:"#ff40a5" }}
+          startIcon={<GoogleIcon sx={{fontSize:18,color:"#ff40a5"}}/>}
+        >
+          Login
+        </Button>
+     
+      }
+    }
+  
+  }
   return (
+  
     <nav>
       <div className="flex items-center justify-between py-3 pl-2 pr-8 shadow-lg fixed top-0 z-50 w-screen bg-[#fefcf3]">
         <Link href="/">
@@ -155,7 +243,7 @@ const Navbar = () => {
             <Link href="/">
             <Button
               color="inherit"
-              sx={{ fontSize: 18, fontWeight: 600, textTransform: "none" }}
+              sx={{ fontSize: 18, fontWeight: 600, textTransform: "none",color:"black" }}
             >
               Home
             </Button>
@@ -163,7 +251,7 @@ const Navbar = () => {
             <Link href="/pricing">
             <Button
               color="inherit"
-              sx={{ fontSize: 18, fontWeight: 600, textTransform: "none" }}
+              sx={{ fontSize: 18, fontWeight: 600, textTransform: "none",color:"black"  }}
             >
               Pricing
             </Button>
@@ -179,41 +267,14 @@ const Navbar = () => {
             <Link href="/blog">
             <Button
               color="inherit"
-              sx={{ fontSize: 18, fontWeight: 600, textTransform: "none" }}
+              sx={{ fontSize: 18, fontWeight: 600, textTransform: "none",color:"black"  }}
             >
               Blog
             </Button>
             </Link>
-       
-          <Button
-        aria-controls={open ? 'basic-menu' : undefined}
-        aria-haspopup="true"
-        aria-expanded={open ? 'true' : undefined}
-        onClick={handleClick}
-        sx={{ fontSize: 18, fontWeight: 600, textTransform: "none",color:"black" }}
-        endIcon={<ArrowDropDownIcon />}
-        startIcon={<ManageAccountsIcon />}
-      >
-        Profile 
-      </Button>
-      <Menu
-        id="basic-menu"
-        anchorEl={anchorEl}
-        open={open}
-        onClose={handleClose}
-        MenuListProps={{
-          'aria-labelledby': 'basic-button',
-        }}
-       
-      >
-        <Link href="/profile/new-template">
-        <MenuItem onClick={handleClose}  sx={{fontWeight:600}}>New Template</MenuItem>
-        </Link>
-        <Link href="/profile/saved-templates">
-        <MenuItem onClick={handleClose}  sx={{fontWeight:600}}>Saved Templates</MenuItem>
-        </Link>
-        <MenuItem onClick={handleClose}  sx={{fontWeight:600}}>Logout</MenuItem>
-      </Menu>
+            {
+              ProfileMenu(loading,isLogin)
+            }
           </div>
           <DownloadButton
             variant="contained"
@@ -248,6 +309,7 @@ const Navbar = () => {
         </Drawer>
       </div>
     </nav>
+  
   );
 };
 
