@@ -136,28 +136,28 @@ const Pricing = () => {
               loading={loading.loading && loading.tier === "Starter" ? true : false}
               >Pay Now</LoadingButton>,
         },
-        {
-            name: 'Pro',
-            indian_original_price: 4169,
-            indian_discount_price: 1668,
-            originalprice: 50,
-            discountprice: 20,
-            features: ['Send unlimited messages per month'],
-            button:<LoadingButton variant='contained' color='primary' sx={{
-                backgroundColor: '#ffcc4b !important',
-                color: 'black',
-                width: '200px',
-                textTransform: 'none',
-                marginTop: '10px',
-                fontWeight: 'bold',
-              }}  size="large"
-                disabled={true}
-                onClick={()=>{
-                    makePayment("Pro",1668)
-                }}
-              loading={loading.loading && loading.tier === "Pro" ? true : false}
-              >Pay Now</LoadingButton>,
-        },
+        // {
+        //     name: 'Pro',
+        //     indian_original_price: 4169,
+        //     indian_discount_price: 1668,
+        //     originalprice: 50,
+        //     discountprice: 20,
+        //     features: ['Send unlimited messages per month'],
+        //     button:<LoadingButton variant='contained' color='primary' sx={{
+        //         backgroundColor: '#ffcc4b !important',
+        //         color: 'black',
+        //         width: '200px',
+        //         textTransform: 'none',
+        //         marginTop: '10px',
+        //         fontWeight: 'bold',
+        //       }}  size="large"
+        //         disabled={true}
+        //         onClick={()=>{
+        //             makePayment("Pro",1668)
+        //         }}
+        //       loading={loading.loading && loading.tier === "Pro" ? true : false}
+        //       >Pay Now</LoadingButton>,
+        // },
     ];
 
     return (
