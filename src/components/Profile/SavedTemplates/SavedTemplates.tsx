@@ -125,6 +125,7 @@ const SavedTemplates = () => {
                   >
                     <TableCell component="th" scope="row">
                       {row.template_name}
+                      <span className="px-2 text-[#ff40a5]">{row.default_template&&"(default template)" }</span>
                     </TableCell>
                     <TableCell align="right">
                       <Link href={`/profile/saved-templates/edit/${row.id}`}>

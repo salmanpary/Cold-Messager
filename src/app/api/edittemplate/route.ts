@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { db } from "../../services/config";
-import { doc,collection, query, where, getDocs, updateDoc, arrayUnion, arrayRemove } from "firebase/firestore";
+import { doc, collection, query, where, getDocs, updateDoc, arrayUnion, arrayRemove } from "firebase/firestore";
 
 export async function PATCH(request: NextRequest, response: NextResponse) {
   try {
@@ -20,8 +20,14 @@ export async function PATCH(request: NextRequest, response: NextResponse) {
       const templateIndex = id; // Assuming `id` is the index of the template in the array
 
       if (templateIndex >= 0 && templateIndex < templatesArray.length) {
+        // Set default_template to false for all templates
+        const updatedTemplatesArray = templatesArray.map((template) => ({
+          ...template,
+          default_template: false,
+        }));
+
         // Update the template with new data
-        templatesArray[templateIndex] = {
+        updatedTemplatesArray[templateIndex] = {
           template_name,
           template_string,
           default_template,
@@ -29,7 +35,7 @@ export async function PATCH(request: NextRequest, response: NextResponse) {
 
         // Update the user document with the modified templates array
         await updateDoc(doc(db, "users-test", userId), {
-          templates: templatesArray,
+          templates: updatedTemplatesArray,
         });
 
         return NextResponse.json({

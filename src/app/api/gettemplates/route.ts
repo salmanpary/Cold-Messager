@@ -23,7 +23,8 @@ export async function POST(request: NextRequest, response: NextResponse) {
       // Get an array of template names and their original indexes
       const templateIndexes = existingTemplates.map((template, index) => ({
         id: index,
-        template_name: template.template_name,
+        template_name: template.template_name,  
+        default_template: template.default_template,
       }));
 
       // Sort the array in ascending order based on the id property
