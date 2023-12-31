@@ -101,7 +101,7 @@ const Pricing = () => {
             indian_discount_price: 0,
             originalprice: 5,
             discountprice: 0,
-            features: ['Send 5 crafted messages.'],
+            features: ['All features of the extension','Trial for 30days'],
             button: <Button variant="contained"
             sx={{
               backgroundColor: '#ffcc4b !important',
@@ -120,7 +120,7 @@ const Pricing = () => {
             indian_discount_price: 834,
             originalprice: 15,
             discountprice: 10,
-            features: ['Send 100 crafted messages per month'],
+            features: ['Send unlimited messages per month'],
             button:<LoadingButton variant='contained' color='primary' sx={{
                 backgroundColor: '#ffcc4b !important',
                 color: 'black',
