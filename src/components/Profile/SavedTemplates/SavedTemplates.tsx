@@ -98,7 +98,7 @@ const SavedTemplates = () => {
   return (
     <div>
       {/* <Navbar /> */}
-      <div className="mt-32 px-10 py-5">
+      <div className="mt-32 px-10 py-5 min-h-[80vh]">
         <div className="text-3xl font-bold">Saved Templates</div>
         <div className="mt-10">
           <TableContainer component={Paper}>
