@@ -12,7 +12,6 @@ import {
 export async function POST(request: NextRequest) {
   try {
     const user = await request.json();
-    console.log(user);
 
     // Reference to the "users" collection
     const usersCollection = collection(db, "users-test");

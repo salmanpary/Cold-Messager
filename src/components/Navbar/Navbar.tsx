@@ -182,9 +182,7 @@ const Navbar = () => {
     try{
       setLoading(true)
       setUser(user)
-      console.log(user.displayName)
       const response=await axios.post("/api/signin",user)
-      console.log(response)
     }catch(error){
       console.log(error)
     }finally{

@@ -1,7 +1,5 @@
 "use client";
-import React, { useState } from "react";
-import Navbar from "../../Navbar/Navbar";
-import Footer from "../../Footer/Footer";
+import React, { useEffect, useState } from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -13,38 +11,90 @@ import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { LoadingButton } from "@mui/lab";
 import Link from "next/link";
-
+import axios from "axios";
+import Skeleton from "@mui/material/Skeleton";
+import { redirect } from "next/navigation";
 const SavedTemplates = () => {
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (!user) {
+      redirect("/");
+    }
+  } ,[]);
   const [loading, setLoading] = useState({});
-
-  const rows = [
-    {
-      id: 1,
-      templateName: "Job Application",
-    },
-    {
-      id: 2,
-      templateName: "Product Sales",
-    },
-    {
-      id: 3,
-      templateName: "Referral Request",
-    },
-    {
-      id: 4,
-      templateName: "Hiring template",
-    },
-  ];
-
-  const handleDelete = (id) => {
+  const [isloading, setIsLoading] = useState(true);
+  const [rows,setRows]=useState([])
+  const handleDelete =async (id) => {
+    try{
     setLoading((prevLoading) => ({ ...prevLoading, [id]: true }));
+    const user = await JSON.parse(localStorage.getItem("user"));
+    const data = {
+      user,
+      id,
+    };
+    const resp =await  axios.patch("/api/deletetemplate", data);
+    console.log(resp);
+    setLoading((prevLoading) => ({ ...prevLoading, [id]: false }));
+    getTemplates()
 
-    // Simulate an asynchronous operation
-    setTimeout(() => {
-      setLoading((prevLoading) => ({ ...prevLoading, [id]: false }));
-    }, 2000);
+    }catch(err){
+      console.log(err)
+    }
+
   };
+  const getTemplates = async () => {
 
+    try{
+    setIsLoading(true);
+    const user = JSON.parse(localStorage.getItem("user"));
+    const data = {
+      user,
+    };
+    const resp = await axios.post("/api/gettemplates", data);
+    console.log(resp.data.templateIndexes)
+    setRows(resp.data.templateIndexes)
+  }catch(err){
+    console.log(err)
+  }finally{
+    setIsLoading(false)
+  }
+
+  }
+  useEffect(() => {
+    getTemplates()
+
+  }
+  ,[])
+  const TableTest=()=>{
+      return(
+        <>
+        <TableRow>
+          <TableCell>
+            <Skeleton variant="text" width={400} height={40}/>
+          </TableCell>
+          <TableCell>
+            <Skeleton variant="text" width={100}  height={40}/>
+          </TableCell>
+          <TableCell>
+            <Skeleton variant="text" width={100} height={40} />
+          </TableCell>
+        </TableRow>
+         <TableRow>
+         <TableCell>
+           <Skeleton variant="text" width={400} height={40}/>
+         </TableCell>
+         <TableCell>
+           <Skeleton variant="text" width={100} height={40} />
+         </TableCell>
+         <TableCell>
+           <Skeleton variant="text" width={100} height={40}/>
+         </TableCell>
+       </TableRow>
+        </>
+      )
+    
+
+  }
   return (
     <div>
       {/* <Navbar /> */}
@@ -65,13 +115,16 @@ const SavedTemplates = () => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {rows.map((row) => (
+                {
+                  isloading && <TableTest/>
+                }
+                {!isloading && rows?.map((row) => (
                   <TableRow
                     key={row.id}
                     sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                   >
                     <TableCell component="th" scope="row">
-                      {row.templateName}
+                      {row.template_name}
                     </TableCell>
                     <TableCell align="right">
                       <Link href={`/profile/saved-templates/edit/${row.id}`}>

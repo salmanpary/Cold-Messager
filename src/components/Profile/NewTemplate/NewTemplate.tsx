@@ -1,12 +1,15 @@
 "use client";
-import React,{useState,useRef,useEffect} from "react";
+import React,{useState,useRef,useLayoutEffect} from "react";
 import { TextField } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
 import SaveIcon from "@mui/icons-material/Save";
 import { styled } from "@mui/system";
 import Button from "@mui/material/Button";
 import axios from "axios";
-
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
+import {redirect} from 'next/navigation'
+import Loading from "../../../app/loading";
 const CssTextField = styled(TextField)({
   "& label.Mui-focused": {
     color: "black",
@@ -27,7 +30,19 @@ const CssTextField = styled(TextField)({
   },
 });
 const NewTemplate = () => {
+
   // Text before {{name}}
+
+  const [isPageLoading,setIsPageLoading] = useState(true)
+  useLayoutEffect(()=>{
+    setIsPageLoading(true)
+    const user = JSON.parse(localStorage.getItem("user"))
+    if(!user){
+      redirect("/")
+     
+    }
+    setIsPageLoading(false)
+  },[])
   const [loading ,setLoading] = useState(false)
  const handleButtonClick = async() => {
   try{
@@ -36,8 +51,10 @@ const NewTemplate = () => {
     const data = {
       user,
       template_name:templateName,
-      template_string:templateContent
+      template_string:templateContentServer,
+      default_template:checked
     }
+    console.log(data)
     const resp= await axios.post("/api/savetemplate",data)
     console.log(resp)
     setTemplateName("")
@@ -54,7 +71,11 @@ const NewTemplate = () => {
   const [templateContent, setTemplateContent] = useState("");
   const [templateName,setTemplateName] = useState("")
   const templateRef = useRef(null);
- 
+  const [checked, setChecked] = useState<boolean>(false);
+  const [templateContentServer,setTemplateContentServer] = useState("")
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setChecked(event.target.checked);
+  };
   const prefixText =
     "Type your template and enclose the variables in double curly braces. For example, ";
   const postfixText =
@@ -66,12 +87,19 @@ const NewTemplate = () => {
     }
    const handleKeyDown = (e) => {
     if (e.key === 'Enter') {
+      console.log('Enter key pressed');
       // Append a newline character to the template content
-      setTemplateContent((prev) => prev + '\n');
+     setTemplateContentServer((prev)=>{
+        return prev+"\\n"
+     })
+     console.log(templateContentServer)
       // Prevent the default behavior of the Enter key
-      e.preventDefault();
     }
+
    }
+  if(isPageLoading){
+    return <Loading/>
+  }
   return (
     <div>
       {/* <Navbar /> */}
@@ -83,11 +111,21 @@ const NewTemplate = () => {
             {/* {highlightedVariable()} */}
             {postfixText}
           </div>
-          <div>
+          <div className="flex flex-wrap gap-6">
 
 <CssTextField label="Template Name" placeholder="Template Name,Eg:sales-template" sx={{width:"30ch"}} onChange={(e)=>{
   setTemplateName(e.target.value)
 }} value={templateName}></CssTextField>
+   <FormControlLabel control={<Checkbox
+   checked={checked}
+    onChange={handleChange}
+   sx={{
+
+// color:"#ff40a5"
+'&.Mui-checked': {
+  color: '#ffcc4b',
+},
+   }}/>} label="Default Template" />
 </div>
           <div>
             <Button sx={{ textTransform: "none",color:"#ff40a5" }}   onClick={() => insertTemplateVariable("{{name}}")} >{`{{name}}`}</Button>
@@ -144,7 +182,12 @@ const NewTemplate = () => {
   sx={{ width: "70%", height: "100%" }}
   rows={10}
   value={templateContent}
-  onChange={(e) => setTemplateContent(e.target.value)}
+  onChange={(e) => {
+    setTemplateContentServer(e.target.value)
+    setTemplateContent(e.target.value)
+
+  
+  }}
   // ref={templateRef}
   inputRef={templateRef}
   onKeyDown={handleKeyDown}
