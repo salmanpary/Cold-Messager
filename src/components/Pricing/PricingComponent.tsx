@@ -29,7 +29,7 @@ const PricingComponent = ({
       <div className="font-bold text-xl text-green-700">{discountprice}$<span> /month</span></div>
       <div className="font-bold text-xl text-green-700">{`(${indian_discount_price}`}&#8377;<span> /month{')'}</span></div>
       </div>
-      <ul className="py-2 min-h-[70px]">
+      <ul className="py-2 min-h-[80px]">
         {features.map((feature: String, index: number) => (
           <li className="flex py-1" key={index}>
             <CheckCircleIcon className="text-[#ff40a5]" />
