@@ -12,14 +12,6 @@ export const metadata:Metadata = {
 			"url":"https://www.coldmessager.com/blog/the-art-of-cold-messaging"
 		}
 	],
-	openGraph:{
-		images:[
-			{
-				url:"https://www.coldmessager.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2Fy3syxyjnd81j%2F22QjRAS60YBZNGKy19GZqp%2F23744cd89bdaad2974b646d5502c48da%2Fmedium_best_linkedin_cold_message_templates_2658249360.png&w=1080&q=75"
-			}
-
-		]
-	}
 	
 
 	
