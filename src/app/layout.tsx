@@ -172,7 +172,15 @@ export const metadata: Metadata = {
 	title: "Cold Messager",
 	description:
 		"Automate your Linkedin Cold Messaging with personalized messages to your Linkedin connections.",
-  }
+		keywords: [
+			'Cold Messaging',
+			'Cold Messaging on LinkedIn',
+			'Cold Messaging Automation',
+			'LinkedIn Outreach',
+			'LinkedIn Messaging',
+			'LinkedIn Automation',
+		  ],
+	}
 
 // wrapper around one or more pages
 // data of page
