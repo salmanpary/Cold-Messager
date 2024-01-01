@@ -23,7 +23,7 @@ const Footer = () => {
         </div>
 
         <div className="flex justify-around w-full md:w-fit md:gap-12">
-          <div className="flex flex-col gap-2 font-bold">
+          <div className="flex flex-col gap-3 font-bold">
             <Link href="/">
               <div className="hover:text-[#ffcc4b] cursor-pointer">Home</div>
             </Link>
@@ -39,7 +39,7 @@ const Footer = () => {
               <div className="hover:text-[#ffcc4b] cursor-pointer">Blog</div>
             </Link>
           </div>
-          <div className="flex flex-col font-bold gap-2">
+          <div className="flex flex-col font-bold gap-3">
             <Link href="/about">
               <div className="hover:text-[#ffcc4b] cursor-pointer">About Us</div>
             </Link>
