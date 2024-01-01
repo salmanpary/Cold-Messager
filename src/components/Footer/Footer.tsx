@@ -17,7 +17,7 @@ const Footer = () => {
             <span className="text-[#ffcc4b] font-bold"> cold outreach</span>{" "}
             campaigns on Linkedin.
           </div>
-          <div className="hidden lg:block hover:text-[#ffcc4b] hover:cursor-pointer">
+          <div className="hidden lg:block">
             &copy; Cold Messager
           </div>
         </div>
@@ -81,7 +81,7 @@ const Footer = () => {
             <FaInstagram className="text-4xl m-2" />
           </Link>
         </div>
-        <div className="lg:hidden block hover:text-[#ffcc4b] hover:cursor-pointer">
+        <div className="lg:hidden block">
           &copy; Cold Messager
         </div>
       </div>
