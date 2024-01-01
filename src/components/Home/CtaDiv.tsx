@@ -8,6 +8,7 @@ const CtaDiv = ({margin_top,padding_x,padding_y,cta_section}) => {
     <Card
       elevation={3}
       sx={{
+        marginX:2,
         maxWidth: 800,
         paddingX: padding_x,
         paddingY:padding_y,
