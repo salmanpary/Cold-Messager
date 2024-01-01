@@ -22,7 +22,6 @@ import ContactMailIcon from "@mui/icons-material/ContactMail";
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
-import { useRouter } from "next/navigation";
 import Image from 'next/image'
 import Skeleton from '@mui/material/Skeleton';
 import GoogleIcon from '@mui/icons-material/Google';
@@ -33,10 +32,9 @@ import {
   GoogleAuthProvider,
 } from "firebase/auth";
 import {auth} from "../../lib/auth/firebase"
-import firebase from "firebase/app";
-import { set } from "date-fns";
 import axios from "axios";
 import ExtensionIcon from '@mui/icons-material/Extension';
+import LoginIcon from '@mui/icons-material/Login';
 const DownloadButton = styled(Button)(({ theme }) => ({
   width: "180px !important",
   height: "50px !important",
@@ -119,11 +117,6 @@ const Navbar = () => {
       path: "/blog",
     },
     {
-      name: "Faq",
-      icon: <QuestionAnswerIcon style={{ color: "#ff40a5" }} />,
-      path: "/",
-    },
-    {
       name: "Contact",
       icon: <ContactMailIcon style={{ color: "#ff40a5" }} />,
       path: "/contact",
@@ -147,6 +140,142 @@ const Navbar = () => {
 
       setState({ ...state, [anchor]: open });
     };
+    const storeUser = async (user: User) => {
+      try{
+        setLoading(true)
+        setUser(user)
+        const response=await axios.post("/api/signin",user)
+      }catch(error){
+        console.log(error)
+      }finally{
+        setLoading(false)
+      }
+    }
+    const googleSignIn = async() => {
+      const provider = new GoogleAuthProvider();
+      const res=await signInWithPopup(auth, provider)
+      const user=res.user
+      if(user!=null){
+        storeUser(user)
+      }
+     
+    };
+  
+    const logOut = async() => {
+      await signOut(auth);
+    };
+    
+    useEffect(() => {
+      const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+  
+        setUser(currentUser);
+  
+        localStorage.setItem("user", JSON.stringify(currentUser));
+      });
+      return () => unsubscribe();
+    }, [user]);
+  
+  
+    const handleSignIn = async () => {
+      try {
+       setLoading(true)
+       setUser(null)
+       setIsLogin(false)
+        await googleSignIn();
+        setIsLogin(true)
+        
+  
+  
+      } catch (error) {
+        
+        console.log(error);
+        setIsLogin(false)
+        setUser(null)
+      }finally{
+        setLoading(false)
+  
+      }
+    };
+  
+    const handleSignOut = async () => {
+      try {
+        setLoading(true)
+        await logOut();
+        localStorage.removeItem("user");
+        setUser(null);
+      } catch (error) {
+        console.log(error);
+      }finally{
+        setIsLogin(false)
+        setLoading(false)
+      }
+    };
+    const MobileProfileMenu=(loading:boolean,isLogin:boolean)=>{
+      if(loading){
+        return <Skeleton variant="rounded" width={100} height={40} />
+      }
+      else{
+        if(isLogin&&user!=null){
+          console.log(user)
+          return <>
+          <Button
+        aria-controls={open ? 'basic-menu' : undefined}
+        aria-haspopup="true"
+        aria-expanded={open ? 'true' : undefined}
+        onClick={handleClick}
+        sx={{ fontSize: 18, fontWeight: 600, textTransform: "none",color:"black" }}
+        endIcon={<ArrowDropDownIcon />}
+        startIcon={<Image src={user?.photoURL} alt="Profile Picture" width={30} height={30} className="rounded-full"/>}
+      >
+       {user?.displayName}
+      </Button>
+  <Menu
+    id="basic-menu"
+    anchorEl={anchorEl}
+    open={open}
+    onClose={handleClose}
+    MenuListProps={{
+      'aria-labelledby': 'basic-button',
+    }}
+    anchorOrigin={{
+      vertical: 'bottom',  // Adjust as needed
+      horizontal: 'right', // This will make the menu appear to the right
+    }}
+    transformOrigin={{
+      vertical: 'top',    // Adjust as needed
+      horizontal: 'right', // This will make the menu appear to the right
+    }}
+  >
+    <Link href="/profile/new-template">
+    <MenuItem onClick={handleClose}  sx={{fontWeight:600}}>New Template</MenuItem>
+    </Link>
+    <Link href="/profile/saved-templates">
+    <MenuItem onClick={handleClose}  sx={{fontWeight:600}}>Saved Templates</MenuItem>
+    </Link>
+    <MenuItem onClick={()=>{
+      handleClose()
+      handleSignOut()
+    }}  sx={{fontWeight:600}} >Logout</MenuItem>
+  </Menu>
+          
+          </>
+
+    }else{
+      return <ListItem disablePadding>
+                <ListItemButton onClick={handleSignIn}>
+                  <ListItemIcon><LoginIcon style={{ color: "#ff40a5" }} /></ListItemIcon>
+                  <ListItemText
+                    primary={"Login"}
+                    sx={{ fontWeight:'600px !important',typography: 'fontWeightBold' , '& .MuiTypography-root': {
+                        fontWeight: '600 !important',
+                      }, }}
+                  />
+                </ListItemButton>
+          </ListItem>
+
+    }
+  }
+}
 
   const list = (
     <Box
@@ -176,79 +305,11 @@ const Navbar = () => {
             </Link>
           </React.Fragment>
         ))}
+      {MobileProfileMenu(loading,isLogin)}
       </List>
     </Box>
   );
-  const storeUser = async (user: User) => {
-    try{
-      setLoading(true)
-      setUser(user)
-      const response=await axios.post("/api/signin",user)
-    }catch(error){
-      console.log(error)
-    }finally{
-      setLoading(false)
-    }
-  }
-  const googleSignIn = async() => {
-    const provider = new GoogleAuthProvider();
-    const res=await signInWithPopup(auth, provider)
-    const user=res.user
-    if(user!=null){
-      storeUser(user)
-    }
-   
-  };
 
-  const logOut = async() => {
-    await signOut(auth);
-  };
-  
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-
-      setUser(currentUser);
-
-      localStorage.setItem("user", JSON.stringify(currentUser));
-    });
-    return () => unsubscribe();
-  }, [user]);
-
-
-  const handleSignIn = async () => {
-    try {
-     setLoading(true)
-     setUser(null)
-     setIsLogin(false)
-      await googleSignIn();
-      setIsLogin(true)
-      
-
-
-    } catch (error) {
-      
-      console.log(error);
-      setIsLogin(false)
-      setUser(null)
-    }finally{
-      setLoading(false)
-
-    }
-  };
-
-  const handleSignOut = async () => {
-    try {
-      setLoading(true)
-      await logOut();
-      localStorage.removeItem("user");
-      setUser(null);
-    } catch (error) {
-      console.log(error);
-    }finally{
-      setIsLogin(false)
-      setLoading(false)
-    }
-  };
 const getUser=async()=>{
   setLoading(true)
   const user_details=await localStorage.getItem("user")
@@ -290,7 +351,14 @@ useEffect(() => {
     MenuListProps={{
       'aria-labelledby': 'basic-button',
     }}
-   
+    anchorOrigin={{
+      vertical: 'bottom',  // Adjust as needed
+      horizontal: 'right', // This will make the menu appear to the right
+    }}
+    transformOrigin={{
+      vertical: 'top',    // Adjust as needed
+      horizontal: 'right', // This will make the menu appear to the right
+    }}
   >
     <Link href="/profile/new-template">
     <MenuItem onClick={handleClose}  sx={{fontWeight:600}}>New Template</MenuItem>
@@ -325,14 +393,16 @@ useEffect(() => {
       <div className="flex items-center justify-between py-3 pl-2 pr-8 shadow-lg fixed top-0 z-50 w-screen bg-[#fefcf3]">
         <Link href="/">
        
-        <img
+        <Image
+        quality={100}
           src="/cold-messager-logo-2.png"
           alt="Vercel Logo"
           width={250}
           height={250}
           className="hidden sm:block"
         />
-        <img
+        <Image
+        quality={100}
           src="/cold-messager-logo-2.png"
           alt="Vercel Logo Mobile"
           className="block sm:hidden"
