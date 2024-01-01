@@ -25,7 +25,7 @@ const Section = () => {
             process on LinkedIn.
           </div>
         </div>
-        <div className="h-96 md:h-auto md:flex-1 relative">
+        <div className="h-52 md:h-auto md:flex-1 relative">
           <Image
             src="/linkedin3.png"
             fill
