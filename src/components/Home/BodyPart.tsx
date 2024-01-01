@@ -78,7 +78,7 @@ const BodyPart = () => {
       <div className="grid place-items-center">
         <CtaDiv
           margin_top={6}
-          padding_x={10}
+          padding_x={4}
           padding_y={8}
           cta_section={
             <>
