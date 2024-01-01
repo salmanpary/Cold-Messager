@@ -59,10 +59,10 @@ const BodyPart = () => {
         </div>
       </div>
       <Section />
-      <div className="flex justify-center items-center">
+      <div className="grid place-items-center">
         <CtaDiv
           margin_top={6}
-          padding_x={10}
+          padding_x={4}
           padding_y={8}
           cta_section={
             <>
@@ -75,7 +75,7 @@ const BodyPart = () => {
         />
       </div>
       <Section2 />
-      <div className="flex justify-center items-center">
+      <div className="grid place-items-center">
         <CtaDiv
           margin_top={6}
           padding_x={10}
