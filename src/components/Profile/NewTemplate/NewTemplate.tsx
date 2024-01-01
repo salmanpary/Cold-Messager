@@ -193,7 +193,7 @@ const NewTemplate = () => {
   onKeyDown={handleKeyDown}
 ></CssTextField>
          
-          <div className="w-[70%] flex justify-end">
+          <div className="w-[100%] sm:w-[70%] flex justify-end">
             <LoadingButton
               loading={loading}
               onClick={handleButtonClick}
