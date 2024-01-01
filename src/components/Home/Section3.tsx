@@ -10,7 +10,7 @@ const Section3 = () => {
         </span>
         
     </div>
-    <div className='text-xl pb-2'>
+    <div className='pb-2'>
     Our tool integrates seamlessly with your Google Chrome browser, making it easy to access and use when you&lsquo;re browsing LinkedIn. No need to switch between different platforms or install additional software - everything you need is right at your fingertips.
     </div>
 </Card>

@@ -6,7 +6,7 @@ const Section2 = () => {
     <div className='font-bold text-2xl py-2'>
     Save your required&nbsp;<span className='font-bold text-[#ffcc4b]'>Templates</span>&nbsp;for quick and consistent outreach.
     </div>
-    <div className='text-xl pb-2'>
+    <div className='pb-2'>
     With our tool, you can create and save <span className='text-[#ffcc4b] font-bold'>customized message templates</span> that fit your target audience. This feature ensures consistency in your outreach while allowing you to tailor your messages for each recipient, personalized and engaging every time.
     </div>
 </Card>
