@@ -179,7 +179,7 @@ const NewTemplate = () => {
   label="Template"
   placeholder={`Eg:Hi {{name}}, Saw that you are working at {{latest_company_name}}.I am currently looking for a full stack developer role at {{latest_company_name}}. Thank you`}
   multiline
-  sx={{ width: "70%", height: "100%" }}
+  sx={{ width:{xs:"100%", sm:"70%"}, height: "100%" }}
   rows={10}
   value={templateContent}
   onChange={(e) => {
