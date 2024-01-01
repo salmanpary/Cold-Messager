@@ -21,7 +21,7 @@ const CtaDiv = ({margin_top,padding_x,padding_y,cta_section}) => {
     >
         <div>
 
-      <div className='font-bold text-2xl mt-[-30px]'>
+      <div className='font-bold text-2xl mt-[-30px] text-center'>
        {cta_section}
        
            
