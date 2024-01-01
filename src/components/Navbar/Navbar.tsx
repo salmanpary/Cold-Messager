@@ -36,6 +36,7 @@ import {auth} from "../../lib/auth/firebase"
 import firebase from "firebase/app";
 import { set } from "date-fns";
 import axios from "axios";
+import ExtensionIcon from '@mui/icons-material/Extension';
 const DownloadButton = styled(Button)(({ theme }) => ({
   width: "180px !important",
   height: "50px !important",
@@ -371,7 +372,7 @@ useEffect(() => {
           </div>
           <DownloadButton
             variant="contained"
-            endIcon={<DownloadDoneRoundedIcon />}
+            endIcon={<ExtensionIcon />}
             size="large"
           >
             Download

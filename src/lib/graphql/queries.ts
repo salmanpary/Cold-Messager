@@ -1,6 +1,6 @@
 export const GET_BLOGS_QUERY = `
 {
-  blogCollection {
+  blogCollection(order: date_DESC) {
     items {
       slug
       headImg {
