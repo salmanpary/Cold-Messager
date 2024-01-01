@@ -33,8 +33,8 @@ const BodyPart = () => {
               padding_y={8}
               cta_section={
                 <>
-                  <span className="text-[#ffcc4b]">Install&nbsp;</span>
-                  <span className="text-white">
+                  <span className="text-[#ff40a5]">Install&nbsp;</span>
+                  <span className="text-black">
                     and never send a generic message again
                   </span>
                 </>
@@ -66,10 +66,10 @@ const BodyPart = () => {
           padding_y={8}
           cta_section={
             <>
-              <span className="text-[#ffcc4b]">
+              <span className="text-[#ff40a5]">
                 Personalise and automate&nbsp;
               </span>
-              <span className="text-white">your Linkedin Messages</span>
+              <span className="text-black">your Linkedin Messages</span>
             </>
           }
         />
@@ -82,8 +82,8 @@ const BodyPart = () => {
           padding_y={8}
           cta_section={
             <>
-              <span className="text-[#ffcc4b]">Save your Template&nbsp;</span>
-              <span className="text-white">that fit your target audience</span>
+              <span className="text-[#ff40a5]">Save your Template&nbsp;</span>
+              <span className="text-black">that fit your target audience</span>
             </>
           }
         />

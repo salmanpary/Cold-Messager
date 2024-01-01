@@ -14,10 +14,11 @@ const CtaDiv = ({margin_top,padding_x,padding_y,cta_section}) => {
         paddingY:padding_y,
         marginTop: margin_top,
         position: 'relative', // Set position to relative
-        background: `url('/extension8.png')`, // Replace with your image path
+        background: `url('/extension10.jpg')`, // Replace with your image path
         backgroundSize: 'cover', // Ensure the image covers the entire card
         color: 'white', // Set text color to white or another suitable color
-        backgroundColor:"#030712"
+        // backgroundColor:"#030712"
+    
       }}
     >
         <div>
