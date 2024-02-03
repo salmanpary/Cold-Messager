@@ -7,14 +7,13 @@ export async function getBlogs() {
 	const res = await fetch(
 		`https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}`,
 		{
-
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
 				Authorization: `Bearer ${process.env.CONTENTFUL_ACCESS_TOKEN}`,
 			},
 			body: JSON.stringify({ query: GET_BLOGS_QUERY }),
-			next:{tags:["blog"]}
+			next: { tags: ["blog"], revalidate: 3600 },
 		}
 	);
 
@@ -27,7 +26,7 @@ export async function getBlog(slug: string) {
 	const res = await fetch(
 		`https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}`,
 		{
-			next:{tags:["blog"]},
+			next: { tags: ["blog"], revalidate: 3600 },
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
