@@ -176,40 +176,55 @@ const Navbar = () => {
     }, [user]);
   
   
-    const handleSignIn = async () => {
-      try {
-       setLoading(true)
-       setUser(null)
-       setIsLogin(false)
-        await googleSignIn();
-        setIsLogin(true)
-        
+    
+const [reload, setReload] = useState<boolean>(false);
+
+
+  const handleSignIn = async () => {
+    try {
+      setLoading(true);
+      setUser(null);
+      setIsLogin(false);
+      await googleSignIn();
+      setIsLogin(true);
+      setReload(true);
+    } catch (error) {
+      console.log(error);
+      setIsLogin(false);
+      setUser(null);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleSignOut = async () => {
+    try {
+      setLoading(true);
+      await logOut();
+      localStorage.removeItem("user");
+      setUser(null);
+      setReload(true);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setIsLogin(false);
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    if (reload) {
+      window.location.reload();
+      console.log('reloaded');
+      setReload(false); // Reset reload state after reloading
+    }
+  }, [reload]);
+
+    
+
+
   
-  
-      } catch (error) {
-        
-        console.log(error);
-        setIsLogin(false)
-        setUser(null)
-      }finally{
-        setLoading(false)
-  
-      }
-    };
-  
-    const handleSignOut = async () => {
-      try {
-        setLoading(true)
-        await logOut();
-        localStorage.removeItem("user");
-        setUser(null);
-      } catch (error) {
-        console.log(error);
-      }finally{
-        setIsLogin(false)
-        setLoading(false)
-      }
-    };
+
     const MobileProfileMenu=(loading:boolean,isLogin:boolean)=>{
       if(loading){
         return <Skeleton variant="rounded" width={100} height={40} />
