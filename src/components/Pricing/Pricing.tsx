@@ -21,13 +21,13 @@ const Pricing = () => {
                 tier: tier,
             });
             const key = process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID;
-            console.log(key);
+          
             // Make Axios call to the serverless API
             const response = await axios.post("/api/razorpay",{
                 tier,price
             });
             const { order } = response.data;
-            console.log(order)
+           
             
             const options = {
                 key: key,
@@ -38,7 +38,7 @@ const Pricing = () => {
                 description: "Cold Messager Subscription",
                 // image: logoBase64,
                 handler: async function (response) {
-                    console.log(response);
+                   
     
                     try {
                         const verifyResponse = await axios.post("/api/paymentverify", {
@@ -47,10 +47,10 @@ const Pricing = () => {
                             razorpay_signature: response.razorpay_signature,
                         });
     
-                        console.log("response verify==", verifyResponse.data);
+                       
     
                         if (verifyResponse.data?.message === "success") {
-                            console.log("redirected.......");
+                          
                             
                             router.push("/paymentsuccess?paymentid=" + response.razorpay_payment_id);
                         }
@@ -83,7 +83,7 @@ const Pricing = () => {
             
             paymentObject.on("payment.failed", function (response) {
                 alert("Payment failed. Please try again. Contact support for help");
-                console.log(response)
+              
             });
         } catch (e) {
             console.error(e);

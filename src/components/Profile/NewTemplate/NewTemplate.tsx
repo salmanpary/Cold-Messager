@@ -54,9 +54,9 @@ const NewTemplate = () => {
       template_string:templateContentServer,
       default_template:checked
     }
-    console.log(data)
+  
     const resp= await axios.post("/api/savetemplate",data)
-    console.log(resp)
+  
     setTemplateName("")
     setTemplateContent("")
 
@@ -103,12 +103,12 @@ const NewTemplate = () => {
     };
    const handleKeyDown = (e) => {
     if (e.key === 'Enter') {
-      console.log('Enter key pressed');
+    
       // Append a newline character to the template content
      setTemplateContentServer((prev)=>{
         return prev+"\\n"
      })
-     console.log(templateContentServer)
+    
       // Prevent the default behavior of the Enter key
     }
 
