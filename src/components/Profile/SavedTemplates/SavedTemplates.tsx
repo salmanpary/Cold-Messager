@@ -33,7 +33,7 @@ const SavedTemplates = () => {
       id,
     };
     const resp =await  axios.patch("/api/deletetemplate", data);
-    console.log(resp);
+    
     setLoading((prevLoading) => ({ ...prevLoading, [id]: false }));
     getTemplates()
 
@@ -51,7 +51,7 @@ const SavedTemplates = () => {
       user,
     };
     const resp = await axios.post("/api/gettemplates", data);
-    console.log(resp.data.templateIndexes)
+    
     setRows(resp.data.templateIndexes)
   }catch(err){
     console.log(err)

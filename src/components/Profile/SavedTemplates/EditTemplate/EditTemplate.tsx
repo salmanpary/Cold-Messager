@@ -65,16 +65,16 @@ const EditTemplate = () => {
     const insertTemplateVariable = (variable) => {
       setTemplateContent((prev) => prev + variable);
       templateRef.current.focus();
-      console.log(templateRef);
+      
     }
    const handleKeyDown = (e) => {
     if (e.key === 'Enter') {
-      console.log('Enter key pressed');
+      
       // Append a newline character to the template content
      setTemplateContentServer((prev)=>{
         return prev+"\\n"
      })
-     console.log(templateContentServer)
+     
       // Prevent the default behavior of the Enter key
     }
 
@@ -90,9 +90,9 @@ const EditTemplate = () => {
         template_string:templateContentServer,
         default_template:checked
       }
-      console.log(data)
+      
       const resp= await axios.patch("/api/edittemplate",data)
-      console.log(resp)
+      
 
     }catch(err){
       console.log(err)
@@ -110,7 +110,7 @@ const EditTemplate = () => {
         id:params.slug
       }
       const resp= await axios.post("/api/template",data)
-      console.log(resp)
+      
       setTemplateName(resp.data.selectedTemplate.template_name)
       setTemplateContent(resp.data.selectedTemplate.template_string)
       setTemplateContentServer(resp.data.selectedTemplate.template_string)

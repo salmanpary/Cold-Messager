@@ -215,7 +215,7 @@ const [reload, setReload] = useState<boolean>(false);
   useEffect(() => {
     if (reload) {
       window.location.reload();
-      console.log('reloaded');
+     
       setReload(false); // Reset reload state after reloading
     }
   }, [reload]);
@@ -231,7 +231,7 @@ const [reload, setReload] = useState<boolean>(false);
       }
       else{
         if(isLogin&&user!=null){
-          console.log(user)
+         
           return <>
           <Button
         aria-controls={open ? 'basic-menu' : undefined}
@@ -345,7 +345,7 @@ useEffect(() => {
     }
     else{
       if(isLogin&&user!=null){
-        console.log(user)
+      
         return <>
          <Button
         aria-controls={open ? 'basic-menu' : undefined}
