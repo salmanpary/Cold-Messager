@@ -1,5 +1,5 @@
 "use client";
-import React,{useState,useRef,useLayoutEffect} from "react";
+import React,{useState,useRef,useLayoutEffect,useEffect} from "react";
 import { TextField } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
 import SaveIcon from "@mui/icons-material/Save";
@@ -113,6 +113,15 @@ const NewTemplate = () => {
     }
 
    }
+
+   useEffect(()=>{
+    console.log('useEffect')
+    setTemplateContentServer(templateContent)
+    setTemplateContent(templateContent)
+  }, [templateContent])
+
+
+
   if(isPageLoading){
     return <Loading/>
   }
@@ -194,8 +203,7 @@ const NewTemplate = () => {
   onChange={(e) => {
     setTemplateContentServer(e.target.value)
     setTemplateContent(e.target.value)
-
-  
+    console.log('onChange')
   }}
   // ref={templateRef}
   inputRef={templateRef}
