@@ -61,10 +61,22 @@ const EditTemplate = () => {
   const prefixText =
     "Type your template and enclose the variables in double curly braces. For example, ";
   const postfixText =
-    ". You can use the following variables: name, location,latest_company_name, latest_company_role, latest_company_years_of_experience, first_top_skill, second_top_skill, latest_volunteering_experience";
+    ". You can use the following variables: name, latest_company_name, latest_company_role, first_top_skill, second_top_skill, latest_volunteering_experience";
     const insertTemplateVariable = (variable) => {
-      setTemplateContent((prev) => prev + variable);
-      templateRef.current.focus();
+      const templateInput = templateRef.current;
+      const startPos = templateInput.selectionStart;
+      const endPos = templateInput.selectionEnd;
+      const newContent = templateInput.value.substring(0, startPos) + variable + templateInput.value.substring(endPos);
+    
+      // Update the content
+      setTemplateContent(newContent);
+    
+      // Set the cursor position after a slight delay
+      setTimeout(() => {
+        const newCursorPos = startPos + variable.length;
+        templateInput.setSelectionRange(newCursorPos, newCursorPos);
+        templateInput.focus();
+      }, 0);
       
     }
    const handleKeyDown = (e) => {
@@ -161,9 +173,7 @@ const EditTemplate = () => {
 </div>
           <div>
             <Button sx={{ textTransform: "none",color:"#ff40a5" }}   onClick={() => insertTemplateVariable("{{name}}")} >{`{{name}}`}</Button>
-            <Button sx={{ textTransform: "none",color:"#ff40a5" }} onClick={()=>{
-              insertTemplateVariable("{{location}}")
-            }}>{`{{location}}`}</Button>
+            
             <Button
              sx={{ textTransform: "none",color:"#ff40a5" }}
              onClick={()=>{
@@ -176,12 +186,6 @@ const EditTemplate = () => {
                 insertTemplateVariable("{{latest_company_role}}")
               }}
             >{`{{latest_company_role}}`}</Button>
-            <Button
-              sx={{ textTransform: "none",color:"#ff40a5" }}
-              onClick={()=>{
-                insertTemplateVariable("{{latest_company_years_of_experience}}")
-              }}
-            >{`{{latest_company_years_of_experience}}`}</Button>
           </div>
       
           <div>

@@ -79,7 +79,7 @@ const NewTemplate = () => {
   const prefixText =
     "Type your template and enclose the variables in double curly braces. For example, ";
   const postfixText =
-    ". You can use the following variables: name, location,latest_company_name, latest_company_role, latest_company_years_of_experience, first_top_skill, second_top_skill, latest_volunteering_experience";
+    ". You can use the following variables: name, latest_company_name, latest_company_role, first_top_skill, second_top_skill, latest_volunteering_experience";
     
     
     
@@ -145,9 +145,7 @@ const NewTemplate = () => {
 </div>
           <div>
             <Button sx={{ textTransform: "none",color:"#ff40a5" }}   onClick={() => insertTemplateVariable("{{name}}")} >{`{{name}}`}</Button>
-            <Button sx={{ textTransform: "none",color:"#ff40a5" }} onClick={()=>{
-              insertTemplateVariable("{{location}}")
-            }}>{`{{location}}`}</Button>
+            
             <Button
              sx={{ textTransform: "none",color:"#ff40a5" }}
              onClick={()=>{
@@ -160,12 +158,7 @@ const NewTemplate = () => {
                 insertTemplateVariable("{{latest_company_role}}")
               }}
             >{`{{latest_company_role}}`}</Button>
-            <Button
-              sx={{ textTransform: "none",color:"#ff40a5" }}
-              onClick={()=>{
-                insertTemplateVariable("{{latest_company_years_of_experience}}")
-              }}
-            >{`{{latest_company_years_of_experience}}`}</Button>
+            
           </div>
       
           <div>
