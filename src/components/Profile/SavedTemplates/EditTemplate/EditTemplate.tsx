@@ -135,6 +135,14 @@ const EditTemplate = () => {
     
     }
   }
+
+  useEffect(()=>{
+    console.log('useEffect')
+    setTemplateContentServer(templateContent)
+    setTemplateContent(templateContent)
+  }, [templateContent])
+
+
   useEffect(()=>{
     getTemplate()
   },[])
@@ -221,8 +229,7 @@ const EditTemplate = () => {
   onChange={(e) => {
     setTemplateContentServer(e.target.value)
     setTemplateContent(e.target.value)
-
-  
+    console.log('onChange')
   }}
   // ref={templateRef}
   inputRef={templateRef}
