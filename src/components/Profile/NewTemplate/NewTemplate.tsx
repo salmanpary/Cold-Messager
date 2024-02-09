@@ -79,7 +79,7 @@ const NewTemplate = () => {
   const prefixText =
     "Type your template and enclose the variables in double curly braces. For example, ";
   const postfixText =
-    ". You can use the following variables: name, latest_company_name, latest_company_role, first_top_skill, second_top_skill, latest_volunteering_experience";
+    ". You can use the following variables: name, latest_company_name, latest_company_role, first_top_skill, second_top_skill";
     
     
     
@@ -115,7 +115,7 @@ const NewTemplate = () => {
    }
 
    useEffect(()=>{
-    console.log('useEffect')
+
     setTemplateContentServer(templateContent)
     setTemplateContent(templateContent)
   }, [templateContent])
@@ -183,12 +183,7 @@ const NewTemplate = () => {
               insertTemplateVariable("{{second_top_skill}}")
             }}
             >{`{{second_top_skill}}`}</Button>
-            <Button
-              sx={{ textTransform: "none",color:"#ff40a5" }}
-              onClick={()=>{
-                insertTemplateVariable("{{latest_volunteering_experience}}")
-              }}
-            >{`{{latest_volunteering_experience}}`}</Button>
+            
           </div>
          
           
@@ -203,7 +198,7 @@ const NewTemplate = () => {
   onChange={(e) => {
     setTemplateContentServer(e.target.value)
     setTemplateContent(e.target.value)
-    console.log('onChange')
+    
   }}
   // ref={templateRef}
   inputRef={templateRef}
