@@ -1,5 +1,5 @@
 "use client";
-import React,{useState,useRef,useLayoutEffect} from "react";
+import React,{useState,useRef,useLayoutEffect,useEffect} from "react";
 import { TextField } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
 import SaveIcon from "@mui/icons-material/Save";
@@ -79,7 +79,7 @@ const NewTemplate = () => {
   const prefixText =
     "Type your template and enclose the variables in double curly braces. For example, ";
   const postfixText =
-    ". You can use the following variables: name, latest_company_name, latest_company_role, first_top_skill, second_top_skill, latest_volunteering_experience";
+    ". You can use the following variables: name, latest_company_name, latest_company_role, first_top_skill, second_top_skill";
     
     
     
@@ -113,6 +113,15 @@ const NewTemplate = () => {
     }
 
    }
+
+   useEffect(()=>{
+
+    setTemplateContentServer(templateContent)
+    setTemplateContent(templateContent)
+  }, [templateContent])
+
+
+
   if(isPageLoading){
     return <Loading/>
   }
@@ -174,12 +183,7 @@ const NewTemplate = () => {
               insertTemplateVariable("{{second_top_skill}}")
             }}
             >{`{{second_top_skill}}`}</Button>
-            <Button
-              sx={{ textTransform: "none",color:"#ff40a5" }}
-              onClick={()=>{
-                insertTemplateVariable("{{latest_volunteering_experience}}")
-              }}
-            >{`{{latest_volunteering_experience}}`}</Button>
+            
           </div>
          
           
@@ -194,8 +198,7 @@ const NewTemplate = () => {
   onChange={(e) => {
     setTemplateContentServer(e.target.value)
     setTemplateContent(e.target.value)
-
-  
+    
   }}
   // ref={templateRef}
   inputRef={templateRef}
