@@ -5,6 +5,8 @@ import Section from "./Section";
 import Section2 from "./Section2";
 import Section3 from "./Section3";
 import Image from "next/image";
+import { Button } from "@mui/material";
+import YouTubeIcon from '@mui/icons-material/YouTube';
 const BodyPart = () => {
   return (
     <>
@@ -22,10 +24,30 @@ const BodyPart = () => {
               LinkedIn prospecting with Cold Messager
             </div>
           </div>
+          <Button
+        variant="contained"
+        sx={{
+          backgroundColor: '#cd201f !important',
+          color: 'white',
+          height: '50px',
+          width: '200px',
+          textTransform: 'none',
+          marginTop: '30px',
+          fontWeight: 'bold',
+        }}
+        size="large"
+        startIcon={<YouTubeIcon fontSize="medium"/>}
+        href="https://www.youtube.com/watch?v=IrJhmRthsu8"
+      >
+        Product Demo
+      </Button>
+      <div className="mt-4 flex justify-center items-center flex-col">
+
           <div className="text-base pt-10 font-bold opacity-75">
             Join the waiting list 🚀
           </div>
           <Form />
+      </div>
           <div>
             <CtaDiv
               margin_top={6}
