@@ -16,9 +16,9 @@ const PrivacyPolicy = () => {
 		<h2 className="text-3xl pt-2" >Use of the Subscription Service by our Customers</h2>
 
 		<p className="pt-2">Our online Subscription Service allows any individual or company that uses it to maximize marketing efforts on LinkedIn by automating the messaging process and simplifying the prospecting process. The Subscription Service can also be utilized in the future to help organize marketing data (such as social selling index, average profile views, search appearances, etc.) of a LinkedIn user in a clear way.</p>
-		<p className="pt-2">The information added to the Subscription Service, either by site visitors providing their contact information or when a Subscription Service user adds the information, is stored and managed on our service provider&apos;s servers. This information is then used to contact visitors about their interest in the company&apos;s services and to interact with the company.</p>
+		<p className="pt-2">The information added to the Subscription Service, either by site visitors providing their contact information or when a Subscription Service user adds the information, is stored and managed on our service provider&lsquo;s servers. This information is then used to contact visitors about their interest in the company’s services and to interact with the company.</p>
 		<p className="pt-2">Our customers may, in the future, use the Subscription Service to automate processes on LinkedIn (such as creating lists of users in their personal CRM page and eventually working with these lists daily) and observe their marketing efforts in a simple way. Cold Messager does not control the content of these lists or the types of information that our customers may choose to collect or manage using the Subscription Service. That information belongs to them and is used, disclosed, and protected by them and is not subject to this Privacy Policy.</p>
-		<p className="pt-2">Cold Messager processes our customer&apos;s information as they direct and in accordance with our agreements with our customers, and we store it on our service provider&apos;s servers, but we do not have control over its collection or management. Our agreements with our customers prohibit us from using that information, except as necessary to provide and improve the Subscription Service, as permitted by this Privacy Policy, and as required by law. Cold Messager acknowledges that you have the right to access your Personal Information.</p>
+		<p className="pt-2">Cold Messager processes our customer&lsquo;s information as they direct and in accordance with our agreements with our customers, and we store it on our service provider&lsquo;s servers, but we do not have control over its collection or management. Our agreements with our customers prohibit us from using that information, except as necessary to provide and improve the Subscription Service, as permitted by this Privacy Policy, and as required by law. Cold Messager acknowledges that you have the right to access your Personal Information.</p>
 
 	  <h2 className="text-3xl pt-2" >Information We Collect</h2>
 
@@ -34,7 +34,7 @@ const PrivacyPolicy = () => {
 
       <p className="pt-2">We may collect the following information from our users that may, in certain circumstances, constitute personal data:</p>
       <ul className="list-disc ml-9">
-        <li>User&apos;s full name (for individuals)</li>
+        <li>Users full name (for individuals)</li>
         <li>Name of organization (for legal entities)</li>
         <li>List of employees (for legal entities only)</li>
         <li>Profile photo</li>
@@ -80,7 +80,7 @@ const PrivacyPolicy = () => {
 	  < h3 className="text-2xl pt-5" >Use of Navigational Information</h3>
       <p className="pt-2">We use Navigational Information to operate and improve the Websites and the Subscription Service. We may also use Navigational Information alone or in combination with Personal Information to provide you with personalized information about Cold Messager.</p>
       < h3 className="text-2xl pt-5" >Customer Testimonials and Comments</h3>
-      <p className="pt-2">We post customer testimonials and comments on our Websites, which may contain Personal Information. We obtain each customer&apos;s consent prior to posting the customer&apos;s name and testimonial.</p>
+      <p className="pt-2">We post customer testimonials and comments on our Websites, which may contain Personal Information. We obtain each customer’s consent prior to posting the customer’s name and testimonial.</p>
       <h2 className="text-2xl pt-2" >Use of Credit Card Information</h2>
       <p className="pt-2">If you give us credit card information, we use it solely to check your financial qualifications and collect payment from you. We use a third-party service provider to manage credit card processing. This service provider is not permitted to store, retain, or use information you provide except for the sole purpose of credit card processing on our behalf.</p>
       < h3 className="text-2xl pt-5" >Security of your Personal Information</h3>
@@ -102,7 +102,7 @@ const PrivacyPolicy = () => {
 	  
 	  <h2 className="text-3xl pt-2" >Cookies and Similar Technologies</h2>
 	  < h3 className="text-2xl pt-5" >Cookies</h3>
-      <p className="pt-2">Cold Messager uses cookies or similar technologies (such as web beacons) to analyze trends, administer the website, track user&apos;s movements around the website, and to gather demographic information about our user base as a whole.</p>
+      <p className="pt-2">Cold Messager uses cookies or similar technologies (such as web beacons) to analyze trends, administer the website, track users’ movements around the website, and to gather demographic information about our user base as a whole.</p>
       <p className="pt-2">When you interact with the Site, we try to make that experience simple and meaningful. When you visit the Site, our web server sends a cookie to your computer. Cookies are small pieces of information which are issued to your computer when you visit a website and which store and sometimes track information about your use of the Site. For example, cookies are used to personalize web search engines and to store shopping lists of items a user has selected while browsing through a virtual shopping mall. A number of cookies we use last only for the duration of your web session and expire when you close your browser. Other cookies are used to remember you when you return to the Site and will last for longer.</p>
       <p className="pt-2">We use cookies to:</p>
       <ul className="list-disc ml-9">
@@ -114,13 +114,14 @@ const PrivacyPolicy = () => {
 
       < h3 className="text-2xl pt-5" >Third Party Tracking Technologies</h3>
       <p className="pt-2">The use of cookies and web beacons by any tracking utility company is not covered by our Privacy Policy or Cookie Policy.</p>
-	  
+
+
       <h1>How to Access & Control Your Personal Data</h1>
       < h3 className="text-2xl pt-5" >Reviewing, Correcting and Removing Your Personal Information</h3>
       <p className="pt-2">You have the following data protection rights:</p>
       <ul className="list-disc ml-9">
         <li><strong>The right to be informed:</strong> You must agree to your information to be processed for purposes you are aware of before it can be processed. You can do this by indicating your consent when providing the information.</li>
-        <li><strong>The right of access:</strong> You may request a copy of all personal data we hold on you in our role as data controller. If you have an account, you can access this information via your profile. If you do not have an account, you can do this by sending us an email to hishamhashir@gmail.com. As well as your personal data, we&apos;ll provide you with:
+        <li><strong>The right of access:</strong> You may request a copy of all personal data we hold on you in our role as data controller. If you have an account, you can access this information via your profile. If you do not have an account, you can do this by sending us an email to hishamhashir@gmail.com. As well as your personal data, we’ll provide you with:
           <ul>
             <li>- the purposes of the processing;</li>
             <li>- the categories of personal data concerned;</li>
@@ -136,7 +137,7 @@ const PrivacyPolicy = () => {
         <li><strong>The right to rectification:</strong> You have the right to have your data rectified, for example, if it is incorrect or incomplete. You can exercise this right by logging in to your profile. If you do not have an account or wish to amend other data, you can do this by sending an email to hishamhashir@gmail.com or salmanpary@gmail.com.</li>
         <li><strong>The right to erasure:</strong> You may exercise your right to withdraw consent or to request erasure of personal data by logging into your profile and deleting it. If you do not have an account or wish to delete specific data, you can do this by sending an email to hishamhashir@gmail.com or salmanpary@gmail.com. Please note that the deletion may not affect an ongoing recruitment process where the employer has already received the data as part of the recruitment process.</li>
         <li><strong>The right to restrict processing:</strong> You can request that we keep your data but do not process it further. You can do this by sending an email to hishamhashir@gmail.com or salmanpary@gmail.com.</li>
-        <li><strong>The right to data portability:</strong> You can request a copy of the information you&apos;ve provided to us in a commonly used format. You can exercise this right by logging in to your profile or by sending an email to hishamhashir@gmail.com or salmanpary@gmail.com.</li>
+        <li><strong>The right to data portability:</strong> You can request a copy of the information you’ve provided to us in a commonly used format. You can exercise this right by logging in to your profile or by sending an email to hishamhashir@gmail.com or salmanpary@gmail.com.</li>
       </ul>
 
 	  <h2 className="text-3xl pt-2" >The Right to Object</h2>
