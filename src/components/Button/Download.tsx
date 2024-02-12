@@ -22,6 +22,7 @@ const DownloadButton = styled(Button)(({ theme }) => ({
         variant="contained"
         endIcon={<ExtensionIcon />}
         size="large"
+        href="https://chromewebstore.google.com/detail/cold-messager/efifnefiiolaaeafodfpgnkmijfnimae?hl=en-GB&authuser=0"
       >
         Download
       </DownloadButton>
