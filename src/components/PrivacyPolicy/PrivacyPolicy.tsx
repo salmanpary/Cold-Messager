@@ -16,9 +16,9 @@ const PrivacyPolicy = () => {
 		<h2 className="text-3xl pt-2" >Use of the Subscription Service by our Customers</h2>
 
 		<p className="pt-2">Our online Subscription Service allows any individual or company that uses it to maximize marketing efforts on LinkedIn by automating the messaging process and simplifying the prospecting process. The Subscription Service can also be utilized in the future to help organize marketing data (such as social selling index, average profile views, search appearances, etc.) of a LinkedIn user in a clear way.</p>
-		<p className="pt-2">The information added to the Subscription Service, either by site visitors providing their contact information or when a Subscription Service user adds the information, is stored and managed on our service provider&aspos;s servers. This information is then used to contact visitors about their interest in the company’s services and to interact with the company.</p>
+		<p className="pt-2">The information added to the Subscription Service, either by site visitors providing their contact information or when a Subscription Service user adds the information, is stored and managed on our service provider&lsquo;s servers. This information is then used to contact visitors about their interest in the company’s services and to interact with the company.</p>
 		<p className="pt-2">Our customers may, in the future, use the Subscription Service to automate processes on LinkedIn (such as creating lists of users in their personal CRM page and eventually working with these lists daily) and observe their marketing efforts in a simple way. Cold Messager does not control the content of these lists or the types of information that our customers may choose to collect or manage using the Subscription Service. That information belongs to them and is used, disclosed, and protected by them and is not subject to this Privacy Policy.</p>
-		<p className="pt-2">Cold Messager processes our customer&aspos;s information as they direct and in accordance with our agreements with our customers, and we store it on our service provider&aspos;s servers, but we do not have control over its collection or management. Our agreements with our customers prohibit us from using that information, except as necessary to provide and improve the Subscription Service, as permitted by this Privacy Policy, and as required by law. Cold Messager acknowledges that you have the right to access your Personal Information.</p>
+		<p className="pt-2">Cold Messager processes our customer&lsquo;s information as they direct and in accordance with our agreements with our customers, and we store it on our service provider&lsquo;s servers, but we do not have control over its collection or management. Our agreements with our customers prohibit us from using that information, except as necessary to provide and improve the Subscription Service, as permitted by this Privacy Policy, and as required by law. Cold Messager acknowledges that you have the right to access your Personal Information.</p>
 
 	  <h2 className="text-3xl pt-2" >Information We Collect</h2>
 
@@ -34,7 +34,7 @@ const PrivacyPolicy = () => {
 
       <p className="pt-2">We may collect the following information from our users that may, in certain circumstances, constitute personal data:</p>
       <ul className="list-disc ml-9">
-        <li>User’s full name (for individuals)</li>
+        <li>Users full name (for individuals)</li>
         <li>Name of organization (for legal entities)</li>
         <li>List of employees (for legal entities only)</li>
         <li>Profile photo</li>
@@ -114,7 +114,7 @@ const PrivacyPolicy = () => {
 
       < h3 className="text-2xl pt-5" >Third Party Tracking Technologies</h3>
       <p className="pt-2">The use of cookies and web beacons by any tracking utility company is not covered by our Privacy Policy or Cookie Policy.</p>
-	  import React from &aspos;react&aspos;;
+
 
       <h1>How to Access & Control Your Personal Data</h1>
       < h3 className="text-2xl pt-5" >Reviewing, Correcting and Removing Your Personal Information</h3>
