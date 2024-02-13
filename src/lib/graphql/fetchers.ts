@@ -1,8 +1,3 @@
-// functions.ts
-//test
-
-import { GET_BLOGS_QUERY } from "./queries";
-
 export async function getBlogs() {
 	const res = await fetch(
 		`https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}`,
@@ -12,7 +7,28 @@ export async function getBlogs() {
 				"Content-Type": "application/json",
 				Authorization: `Bearer ${process.env.CONTENTFUL_ACCESS_TOKEN}`,
 			},
-			body: JSON.stringify({ query: GET_BLOGS_QUERY }),
+			body: JSON.stringify({
+				query: `
+			{
+				blogCollection(order: date_DESC) {
+					items {
+						slug
+						headImg {
+							url
+						}
+						authorName
+						authorImage {
+							url
+						}
+						title
+						date
+						genre
+						smallDescription
+					}
+				}
+			}
+			`,
+			}),
 			next: { tags: ["blog"], revalidate: 3600 },
 		}
 	);
@@ -26,7 +42,7 @@ export async function getBlog(slug: string) {
 	const res = await fetch(
 		`https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}`,
 		{
-			next: { tags: ["blog"], revalidate: 3600 },
+			next: { tags: ["blog"], revalidate: 30 },
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
@@ -47,7 +63,17 @@ export async function getBlog(slug: string) {
               title
               date
               blogContent {
-                json
+                     json
+              }
+							metaTags {
+                metaTitle
+                metaDescription
+                canonicalTag
+                metaKeywords
+                metaRobots
+                metaAuthor
+                metaTheme
+                metaRefresh
               }
             }
           }

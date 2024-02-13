@@ -1,5 +1,5 @@
 import React from "react";
-import { getBlogs } from "../../../lib/graphql/functions";
+import { getBlogs } from "../../../lib/graphql/fetchers";
 import BlogCard from "../BlogCard/page";
 
 type Blog = {
@@ -17,7 +17,7 @@ type Blog = {
 	};
 };
 
-const BlogList:any = async () => {
+const BlogList: any = async () => {
 	const blogs = await getBlogs();
 	return (
 		<div className="mt-28 p-5 min-h-screen">
