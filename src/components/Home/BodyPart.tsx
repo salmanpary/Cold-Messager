@@ -8,8 +8,23 @@ import Image from "next/image";
 import { Button } from "@mui/material";
 import YouTubeIcon from '@mui/icons-material/YouTube';
 const BodyPart = () => {
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Cold Messager",
+    "operatingSystem": "WINDOWS",
+    "applicationCategory": "BusinessApplication",
+  }
+  
   return (
     <>
+
+    <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
       <div className="flex flex-col-reverse xl:flex-row m-2 mt-20 lg:mt-40 mb-20">
         <div className="flex flex-col justify-center items-center">
           <h1 className="text-2xl xl:text-3xl font-extrabold flex text-center p-4 flex-wrap justify-center items-center">
@@ -74,7 +89,7 @@ const BodyPart = () => {
           <Image
             quality={100}
             src="/magnet-removebg-preview.jpg"
-            alt=""
+            alt="Attract LinkedIn Leads Effortlessly"
             width={400}
             height={400}
           />
