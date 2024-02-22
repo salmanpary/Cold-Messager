@@ -32,18 +32,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode; }) {
   return (
     <>
-      <Head>
-        <title>Automate your LinkedIn Cold Prospecting</title>
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "SoftwareApplication",
-            "name": "Cold Messager",
-            "operatingSystem": "WINDOWS",
-            "applicationCategory": "BusinessApplication",
-          })}
-        </script>
-      </Head>
+      
       <body className={inter.className}>
         {/* Google Analytics */}
         {process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS && (
