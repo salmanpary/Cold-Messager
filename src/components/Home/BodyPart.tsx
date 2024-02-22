@@ -12,12 +12,12 @@ const BodyPart = () => {
     <>
       <div className="flex flex-col-reverse xl:flex-row m-2 mt-20 lg:mt-40 mb-20">
         <div className="flex flex-col justify-center items-center">
-          <div className="text-2xl xl:text-3xl font-extrabold flex text-center p-4 flex-wrap justify-center items-center">
+          <h1 className="text-2xl xl:text-3xl font-extrabold flex text-center p-4 flex-wrap justify-center items-center">
             <div className=" text-[#ffcc4b]">2x</div>&nbsp;Your Responses with
             our Linkedin&nbsp;
             <div className=" text-[#ffcc4b]">Cold Message</div>
             &nbsp; <div>Automation tool.</div>
-          </div>
+          </h1>
           <div className="text-center p-2 text-xl xl:text-2xl font-semibold">
             Automate your outreach and supercharge your &nbsp;
             <div className="font-bold text-[#ffcc4b]">
@@ -65,7 +65,7 @@ const BodyPart = () => {
           </div>
         </div>
         <div className="hidden xl:block" style={{ backgroundColor: "#fefcf3" }}>
-          <img src="/magnet-removebg.png" alt="" width={500} height={500} />
+          <img src="/magnet-removebg.png" alt="Attract LinkedIn Leads Effortlessly" width={500} height={500} />
         </div>
         <div
           className="xl:hidden flex justify-center items-center"
@@ -88,10 +88,12 @@ const BodyPart = () => {
           padding_y={8}
           cta_section={
             <>
+            <h2>
               <span className="text-[#ff40a5]">
                 Personalise and automate&nbsp;
               </span>
               <span className="text-black">your Linkedin Messages</span>
+              </h2>
             </>
           }
         />
