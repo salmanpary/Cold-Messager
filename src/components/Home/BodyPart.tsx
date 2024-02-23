@@ -57,11 +57,13 @@ const BodyPart = () => {
         Product Demo
       </Button>
       <div className="mt-4 flex justify-center items-center flex-col">
-
-          <div className="text-base pt-10 font-bold opacity-75">
+{/*
+      <div className="text-base pt-10 font-bold opacity-75">
             Join the waiting list 🚀
           </div>
-          <Form />
+      <Form />*/}
+
+      
       </div>
           <div>
             <CtaDiv
